@@ -56,7 +56,7 @@ function refresh()
 {
     setTimeout(function()
     {
-        $('#refreshTime').innerHTML.load('<?php echo base_url();?>CountDown/lihat_countdown');
+        $('#refreshTime').innerHTML.load('<?php echo base_url();?>CountDown');
     }, 1000);
 };
 
