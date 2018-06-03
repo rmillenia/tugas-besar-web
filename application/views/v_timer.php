@@ -2,46 +2,40 @@
 <html>
 <head>
  <title>CountDown</title>
- <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
- <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>/assets/materialize/css/materialize.min.css"  media="screen,projection"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+     <link href="<?php echo base_url();?>assets/awal/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+
 </head>
+
+
 <body>
- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
- <script type="text/javascript" src="<?php echo base_url();?>/assets/materialize/js/materialize.js"></script>
- <div class="container" id="refreshTime">
- <div class="row">
- <div class="col s12">
- <h2 class="center blue-text">MaInBack</h2>
+  <center>
+ <div class="container-fluid" id="refreshTime">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>MaInBack</h2>
+      </div>
+    </div>
+    <div class="row" >
+    <div class="col-sm-3"><h5 id="id1"></h5></div>
+ <div class="col-sm-3"><h5 id="id2"></h5></div>
+ <div class="col-sm-3"><h5 id="id3"></h5></div>
+<div class="col-sm-3"><h5 id="id4"></h5></div>
  </div>
  </div>
- <div class="row">
- <div class="col s2 offset-s2">
- <div class="card">
- <div class="card-content"><h5 id="id1" class="center"></h5></div>
- </div>
- </div>
- <div class="col s2">
- <div class="card">
- <div class="card-content"><h5 id="id2" class="center"></h5></div>
- </div>
- </div>
- <div class="col s2">
- <div class="card">
- <div class="card-content"><h5 id="id3" class="center"></h5></div>
- </div>
- </div>
- <div class="col s2">
- <div class="card">
- <div class="card-content"><h5 id="id4" class="center"></h5></div>
- </div>
- </div>
- </div>
- </div>
-
- <div id="demo"></div>
-
+</center>
 <script>
+
+  function refresh()
+{
+    setTimeout(function()
+    {
+        $('#refreshTime').load('<?php echo base_url();?>Countdown/lihat_countdown');
+    }, 1000);
+};
+
+
 // Set the date we're counting down to
 var countDownDate = '';
 var a = '<?php echo $timer->date?>'+' <?php echo $timer->startTime?>';
@@ -52,13 +46,7 @@ if (a == ''){
 }
 
 
-function refresh()
-{
-    setTimeout(function()
-    {
-        $('#refreshTime').innerHTML.load('<?php echo base_url();?>Countdown/lihat_countdown');
-    }, 1000);
-};
+
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -84,15 +72,14 @@ var x = setInterval(function() {
       document.getElementById("id4").innerHTML = seconds + ' Detik';
 
     // If the count down is over, write some text 
-    if (distance <= 0) {
+    if (distance < 0) {
         clearInterval(x);
+        document.getElementById("id1").innerHTML = '0' +' Hari';
+        document.getElementById("id2").innerHTML = '0' + ' Jam';
+        document.getElementById("id3").innerHTML = '0' + ' Menit';
+        document.getElementById("id4").innerHTML = '0' + ' Detik';
+        refresh();
 
-      document.getElementById("id1").innerHTML = '0' +' Hari';
-      document.getElementById("id2").innerHTML = '0' + ' Jam';
-      document.getElementById("id3").innerHTML = '0' + ' Menit';
-      document.getElementById("id4").innerHTML = '0' + ' Detik';
-
-      refresh();
 
     }
 }, 1000);
