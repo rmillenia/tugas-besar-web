@@ -17,7 +17,7 @@
         <h2>MaInBack</h2>
       </div>
     </div>
-    <div class="row" >
+    <div class="row" id="yuhu">
     <div class="col-sm-3"><h5 id="id1"></h5></div>
  <div class="col-sm-3"><h5 id="id2"></h5></div>
  <div class="col-sm-3"><h5 id="id3"></h5></div>
@@ -27,11 +27,12 @@
 </center>
 <script>
 
-  function refresh()
+ function refresh()
 {
     setTimeout(function()
     {
         $('#refreshTime').load('<?php echo base_url();?>Countdown/lihat_countdown');
+       
     }, 1000);
 };
 
@@ -46,13 +47,8 @@ if (a == ''){
 }
 
 
-
-
 // Update the count down every 1 second
-var x = setInterval(function() {
-
-   
-
+var x = setInterval(function() {   
     // Get todays date and time
     var now = new Date().getTime();
     
@@ -74,15 +70,22 @@ var x = setInterval(function() {
     // If the count down is over, write some text 
     if (distance < 0) {
         clearInterval(x);
-        document.getElementById("id1").innerHTML = '0' +' Hari';
-        document.getElementById("id2").innerHTML = '0' + ' Jam';
-        document.getElementById("id3").innerHTML = '0' + ' Menit';
-        document.getElementById("id4").innerHTML = '0' + ' Detik';
-        refresh();
-
-
-    }
+        if (<?php echo $count;?> == 1) {
+            document.getElementById("id1").innerHTML = 'Tidak';
+            document.getElementById("id2").innerHTML = 'Ada';
+            document.getElementById("id3").innerHTML = 'Event';
+            document.getElementById("id4").innerHTML = 'Yang Tersedia';
+        }else{
+          document.getElementById("id1").innerHTML = '0' +' Hari';
+          document.getElementById("id2").innerHTML = '0' + ' Jam';
+          document.getElementById("id3").innerHTML = '0' + ' Menit';
+          document.getElementById("id4").innerHTML = '0' + ' Detik';
+          refresh();
+        }
+        
+     }
 }, 1000);
+
 </script>
 
 </body>
