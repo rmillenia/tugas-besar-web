@@ -6,7 +6,7 @@ class EventArtist extends CI_Controller {
     public function index()
     {
         $this->load->model('EventArtist');
-        $data["eventartist_list"] = $this->EventArtist->getName();
+        $data["eventartist_list"] = $this->EventArtist->getArtist();
         $this->load->view('admin/header');
         $this->load->view('admin/sidebar'); 
         $this->load->view('admin/artistEvent', $data);
@@ -69,7 +69,7 @@ class EventArtist extends CI_Controller {
                 
             }else{
                 
-                $this->EventArtist->updateName($id);
+                $this->EventArtist->updateArtist($id);
                 echo "<script>alert('Successfully Updated'); </script>";
                 redirect('EventArtist','refresh');
         }
@@ -80,7 +80,7 @@ class EventArtist extends CI_Controller {
     {
         $this->load->model('EventArtistModel');
         //$id = $this->uri->segment(3);
-        $this->EventArtist->deleteName($id);
+        $this->EventArtist->deleteArtist($id);
         redirect('EventArtist','refresh');
 
     }
