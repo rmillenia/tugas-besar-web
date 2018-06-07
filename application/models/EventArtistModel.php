@@ -9,18 +9,15 @@ class EventArtistModel extends CI_Model {
         //Do your magic here
     }
 
-    public function getArtist($number,$offset)
+    public function getArtist()
     {
-        $query = $this->db->get('eventartist',$number,$offset);
+        $query = $this->db->get('eventartist');
         if($query->num_rows()>0){
             return $query->result();
         }
     }
 
-    public function countArtist()
-    {
-    	return $this->db->get('eventartist')->num_rows();
-    }
+   
  
 
     public function save()
