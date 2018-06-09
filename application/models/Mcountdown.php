@@ -16,7 +16,14 @@ class Mcountdown extends CI_Model {
  				$query = $this->db->query("SELECT date, startTime from eventschedule where CONCAT(date, ' ', startTime) >= now() order by date,startTime asc;");
  				if($query->num_rows()>0){
  						return $query->row();
+ 				}else{
+ 					$ha = 'tidak ada event';
+ 					return $ha;
  				}
+ 		}
+ 		public function count_time(){
+ 				$query = $this->db->query("SELECT COUNT(date) from eventschedule where CONCAT(date, ' ', startTime) >= now() order by date,startTime asc");
+ 				return $query->num_rows();
  		}
 }
 
