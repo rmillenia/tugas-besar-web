@@ -37,9 +37,14 @@
 								Our Next Event			
 							</h1>
 							<div>
-								<?php foreach ($name as $key) {?>
+								<?php if(is_array($name)){?>
+                  					<?php foreach ($name as $key) {?>
 								<h2 class="text-white"><?php echo $key->name ; ?></h2>
-								<?php } ?>
+								<?php }}else{?>
+								<h2 class="text-white"> There's no upcoming events</h2>
+								<?php }?>
+
+
 							</div>
 							<div class="countdown">
 								<div id="timer" class="text-white">
@@ -50,7 +55,9 @@
 					</div>
 				</div>
 			</section>
-			<!-- End banner Area -->	
+			<!-- End banner Area -->
+		<?php if(is_array($sche)){?>
+		<?php foreach ($sche as $key) {?>
 		<section class="spekers-area pb-100" id="speakers">			
 		<br>
 			<center><h1>Our Upcoming Events in This Month</h1></center>
@@ -59,7 +66,7 @@
 				<div class="container-fluid">
 					<div class="row no-padding">
 						<div class="active-speaker-carusel col-lg-12 no-padding">
-							<?php foreach ($sche as $key) {?>
+							
 							<div class="single-speaker item">
 								<div class="container">
 									<div class="row align-items-center">
@@ -88,12 +95,21 @@
 										</div>
 									</div>
 								</div>								
-							</div>
-							<?php } ?>																							
+							</div>																						
 						</div>
 					</div>
-				</div>	
+				</div>
 			</section>
+			<?php }}else{?>	
+					<section class="spekers-area pb-100" id="speakers">	
+						<br>
+							<center><h1>Our Upcoming Events in This Month</h1></center>
+						<br>
+							<center><h3>There's no upcoming events</h3></center>
+							<?php }?>	
+					</section>
+
+
 			<!-- End spekers Area -->
 			
 			<!-- Start schedule Area -->

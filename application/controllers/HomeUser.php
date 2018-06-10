@@ -10,8 +10,8 @@ class HomeUser extends CI_Controller {
  		$result['name'] = $this->mcountdown->select_name();
  		$result['count'] = $this->mcountdown->count_time();
  		$result['sche'] = $this->mcountdown->getAllSche();
- 		$this->load->view('user/header' , $result);
+ 		$this->load->view('user/header',$result);
         $this->load->view('user/home' , $result);
-        $this->load->view('user/footer' , $result);
+        $this->load->view('user/footer',$result);
 		}
  }
