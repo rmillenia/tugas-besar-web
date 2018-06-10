@@ -13,7 +13,7 @@
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url();?>EventName">Event Name</a></li>
                                 <li><a href="<?php echo base_url();?>Home/catEvent"> Event Category</a></li>
-                                <li><a href="<?php echo base_url();?>Home/catEvent"> Event Artist</a></li>
+                                <li><a href="<?php echo base_url();?>EventArtist"> Event Artist</a></li>
                                 <li><a href="<?php echo base_url();?>HomeVenue/venueEvent">Event Venue</a></li>
                                 <li><a href="<?php echo base_url();?>EventVenue">Event Seat Zone</a></li>
                             </ul>

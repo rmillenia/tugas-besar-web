@@ -11,7 +11,7 @@ class EventArtistModel extends CI_Model {
 
     public function getArtist()
     {
-        $query = $this->db->get('eventartist');
+        $query = $this->db->get('artist');
         if($query->num_rows()>0){
             return $query->result();
         }
@@ -23,12 +23,12 @@ class EventArtistModel extends CI_Model {
     public function save()
     {
         $data = array(
-            'artist'		=> $this->input->post('artist'),
+            'artist'		=> $this->input->post('name'),
             'gender'		=> $this->input->post('gender'),
-            'birthdate'		=> $this->input->post('date'),
-            'pict'          => $this->upload->data('file_name')
+            'birthdate'		=> $this->input->post('birth'),
+            'picture'          => $this->upload->data('file_name')
         );
-        $this->db->insert('eventartist',$data);
+        $this->db->insert('artist',$data);
     } 
     public function getArtistNamebyID($id)
     {
@@ -40,30 +40,30 @@ class EventArtistModel extends CI_Model {
     public function deleteArtist($id)
     {
         $this->db->where('idArtist', $id);
-        $this->db->delete('eventartist');
+        $this->db->delete('artist');
     }
 
     public function updateArtist($id)
     {
         $data = array(
-            'artist'		=> $this->input->post('artist'),
+            'artist'		=> $this->input->post('name'),
             'gender'		=> $this->input->post('gender'),
-            'birthdate'		=> $this->input->post('date'),
-            'pict'          => $this->upload->data('file_name')
+            'birthdate'		=> $this->input->post('birth'),
+            'picture'          => $this->upload->data('file_name')
         );
          $this->db->where('idArtist', $id);
-        $this->db->update('eventartist', $data);
+        $this->db->update('artist', $data);
     }
 
     public function updateno($id)
     {
         $data = array(
-			'artist'		=> $this->input->post('artist'),
+			'artist'		=> $this->input->post('name'),
             'gender'		=> $this->input->post('gender'),
-            'birthdate'		=> $this->input->post('date'),
+            'birthdate'		=> $this->input->post('birth'),
         );
          $this->db->where('idArtist', $id);
-        $this->db->update('eventartist', $data);
+        $this->db->update('artist', $data);
     }
 
 }

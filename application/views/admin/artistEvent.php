@@ -53,22 +53,24 @@
 							<tr>
 								<!--<th>ID</th> -->
 								<th>Name</th>
-								<th>Description</th>
+								<th>Gender</th>
+								<th>Birth Date</th>
 								<th>Picture</th>
 								<th>  </th>
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($eventname_list as $key){ ?>
+							<?php foreach ($eventartist_list as $key){ ?>
 							<tr>
 							<!--<td><?php echo $key->id ; ?></td> -->
-							<td><?php echo $key->name ; ?></td>
-							<td><?php echo $key->description ; ?></td>
-							<td><img src="<?php echo base_url();?>assets/imgEvent/<?php echo $key->pict;?>" class="img-thumbnail" width="50"></td>
+							<td><?php echo $key->artist ; ?></td>
+							<td><?php echo $key->gender ; ?></td>
+							<td><?php echo $key->birthdate ; ?></td>
+							<td><img src="<?php echo base_url();?>assets/imgEvent/<?php echo $key->picture;?>" class="img-thumbnail" width="50"></td>
 							<td>
-								<a href="javascript:void(0);" data-id="<?php echo $key->id ; ?>" data-name="<?php echo $key->name ; ?>" data-desc="<?php echo $key->description ; ?>" data-pict="<?php echo $key->pict ; ?>" data-toggle="modal" data-target="#edit-data">
-                            		<button  data-toggle="modal" data-target="#ubah-data" class="btn btn-secondary"><span class="fa fa-edit"></span></button></a>
-								<a href="<?php echo site_url()?>/EventName/delete/<?php echo $key->id; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete this data permanently?'); "><span class="fa fa-trash"></span></a>
+								<a href="javascript:void(0);" data-id="<?php echo $key->idArtist ; ?>" data-name="<?php echo $key->artist ; ?>" data-gender="<?php echo $key->gender ; ?>" data-birth="<?php echo $key->birthdate ; ?>" data-pic="<?php echo $key->picture ; ?>" data-toggle="modal" data-target="#edit-data">
+                            	<button  data-toggle="modal" data-target="#ubah-data" class="btn btn-secondary"><span class="fa fa-edit"></span></button></a>
+								<a href="<?php echo site_url()?>/EventName/delete/<?php echo $key->idArtist; ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete this data permanently?'); "><span class="fa fa-trash"></span></a>
 							</td>
 							</tr>
 							<?php } ?>
@@ -95,15 +97,21 @@
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
-		                        <label class="col-lg-2 col-sm-2 control-label">Description</label>
+		                        <label class="col-lg-2 col-sm-2 control-label">Gender</label>
 		                        <div class="col-lg-12">
-		                        	<textarea class="form-control" name="desc" placeholder="Input any descriptions" required></textarea>
+		                        	<textarea class="form-control" name="gender" placeholder="Input any descriptions" required></textarea>
+		                        </div>
+		                    </div>
+		                    <div class="form-group">
+		                        <label class="col-lg-2 col-sm-2 control-label">Birth Date</label>
+		                        <div class="col-lg-12">
+		                        	<textarea class="form-control" name="birth" placeholder="Input any descriptions" required></textarea>
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
 		                        <label class="col-lg-2 col-sm-2 control-label">Picture</label>
 		                        <div class="col-lg-12">
-		                            <input type="file" class="form-control" name="pict" required>
+		                            <input type="file" class="form-control" name="pic" required>
 		                        </div>
 		                    </div>
 		                </div>
@@ -135,15 +143,21 @@
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
-		                        <label class="col-lg-2 col-sm-2 control-label">Description</label>
+		                        <label class="col-lg-2 col-sm-2 control-label">Gender</label>
 		                        <div class="col-lg-12">
-		                        	<textarea class="form-control" id="desc" name="desc" placeholder="Input any descriptions" required></textarea>
+		                        	<textarea class="form-control" id="gender" name="gender" placeholder="Input any descriptions" required></textarea>
+		                        </div>
+		                    </div>
+		                     <div class="form-group">
+		                        <label class="col-lg-2 col-sm-2 control-label">Birth Date</label>
+		                        <div class="col-lg-12">
+		                        	<textarea class="form-control" id="birth" name="birth" placeholder="Input any descriptions" required></textarea>
 		                        </div>
 		                    </div>
 		                    <div class="form-group">
 		                        <label class="col-lg-2 col-sm-2 control-label">Photo</label>
 		                        <div class="col-lg-12">
-		                            <input type="file" class="form-control" id="pict" name="pict">
+		                            <input type="file" class="form-control" id="pic" name="pic">
 		                        </div>
 		                    </div>
 		                </div>
@@ -167,8 +181,9 @@
 	            // Isi nilai pada field
 	            modal.find('#id').attr("value",div.data('id'));
 	            modal.find('#name').attr("value",div.data('name'));
-	            modal.find('#desc').html(div.data('desc'));
-	            modal.find('#pict').attr("value",div.data('pict'));
+	            modal.find('#gender').html(div.data('gender'));
+	             modal.find('#birth').html(div.data('birth'));
+	            modal.find('#pic').attr("value",div.data('pic'));
 	        });
 	    });
 	</script>
