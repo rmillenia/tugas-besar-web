@@ -7,13 +7,13 @@
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
 				          <li class="menu-active"><a href="#home">Home</a></li>
-				          <li><a href="#videos">Videos</a></li>
-				          <li><a href="#speakers">Speakers</a></li>
-				          <li><a href="#schedule">Schedule</a></li>
+				          <li><a href="#speakers">Latest Event</a></li>
+				          <li><a href="#schedule">All Event</a></li>
+				          <li><a href="generic.html">Login</a></li>
 				          <li class="menu-has-children"><a href="">Pages</a>
 				            <ul>
-				              <li><a href="generic.html">Generic</a></li>
-				              <li><a href="elements.html">Elements</a></li>
+				              
+				              <li><a href="elements.html">Status Check</a></li>
 				            </ul>
 				          </li>
 				          <li><a class="ticker-btn" href="#"><span class="fa fa-lg fa-shopping-cart"></span></a></li>
