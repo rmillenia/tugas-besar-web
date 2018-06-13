@@ -56,8 +56,8 @@
 				</div>
 			</section>
 			<!-- End banner Area -->
-		<?php if(is_array($sche)){?>
-		<?php foreach ($sche as $key) {?>
+		<?php if (is_array($sche)) {
+		 foreach ($sche as $key) {?>
 		<section class="spekers-area pb-100" id="speakers">			
 		<br>
 			<center><h1>Our Upcoming Events in This Month</h1></center>
@@ -100,7 +100,7 @@
 					</div>
 				</div>
 			</section>
-			<?php }}else{?>	
+						<?php }}else{?>	
 					<section class="spekers-area pb-100" id="speakers">	
 						<br>
 							<center><h1>Our Upcoming Events in This Month</h1></center>
