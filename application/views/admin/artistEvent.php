@@ -46,8 +46,8 @@
 	<center>
 	<div class="row">
     <?php foreach ($eventartist_list as $key){ ?>
-    <div class="col-lg-4 col-xlg-3 col-md-5">
-		<div class="card" style="width: 250; height: 250">
+    <div class="col-lg-3 col-xlg-3 col-md-5">
+		<div class="card" style="width: 275; height: 275">
             	<center><img src="<?php echo base_url()?>assets/imgEvent/<?php echo $key->picture;?>" class="img-circle" width="100" height="100" />
             <h4 class="card-title"><?php echo $key->artist ; ?></h4>
             <div class="card-body">
