@@ -192,15 +192,9 @@
     <!--Custom JavaScript -->
 
     <script src="<?php echo base_url();?>assets/awal/js/scripts.js"></script>
-    <!-- scripit init-->
+    <!-- script init-->
 
     <script src="<?php echo base_url();?>assets/awal/js/custom.min.js"></script>
-
-<script type="text/javascript">
-      $(document).ready(function() {
-        $('#example').DataTable();
-      });
-    </script>
 
 </body>
 </html>

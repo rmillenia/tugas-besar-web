@@ -14,7 +14,7 @@ class Mcountdown extends CI_Model {
  		}
 
  		public function select_name(){
- 			$query = $this->db->query("SELECT * from eventschedule inner join eventname on eventschedule.event_id = eventname.id  where CONCAT(date, ' ', startTime) >= now() order by date,startTime asc limit 1;");
+ 			$query = $this->db->query("SELECT * from eventschedule inner join eventname on eventschedule.event_id = eventname.id inner join artist on eventschedule.artist_id = artist.idArtist  where CONCAT(date, ' ', startTime) >= now() order by date,startTime asc limit 1;");
  				if($query->num_rows()>0){
  						return $query->result();
  				}else{
@@ -37,6 +37,13 @@ class Mcountdown extends CI_Model {
    						exit;
    				}
 		}
+
+    public function getTicket(){
+      $query = $this->db->query("SELECT * from eventprice as p inner join eventseat as s on p.seat_id = s.idSeat inner join eventschedule as d on p.schedule_id = d.idSchedule and s.venue_id = d.venue_id where MONTH(d.date) = month(now()) and CONCAT(date, ' ', startTime) >= now()");
+        if($query->num_rows()>0){
+            return $query->result();
+        }
+    }
 }
 
 /* End of file Mcountdown.php */

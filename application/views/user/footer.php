@@ -47,3 +47,21 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					</div>
 				</div>
 			</footer>	
+
+			<!-- End footer Area -->	
+
+			<script src="<?php echo base_url();?>assets/assets/js/vendor/jquery-2.2.4.min.js"></script>
+			<script src="<?php echo base_url();?>assets/assets/js/vendor/bootstrap.min.js"></script>			
+  			<script src="<?php echo base_url();?>assets/assets/js/easing.min.js"></script>			
+			<script src="<?php echo base_url();?>assets/assets/js/superfish.min.js"></script>	
+			<script src="<?php echo base_url();?>assets/assets/js/jquery.ajaxchimp.min.js"></script>
+			<script src="<?php echo base_url();?>assets/assets/js/jquery.magnific-popup.min.js"></script>	
+			<script src="<?php echo base_url();?>assets/assets/js/owl.carousel.min.js"></script>			
+			<script src="<?php echo base_url();?>assets/assets/js/main.js"></script>	
+
+
+		</body>
+	</html>
+
+
+

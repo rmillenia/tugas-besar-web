@@ -46,6 +46,12 @@
             <!-- Container fluid  -->
             <div class="container-fluid">
                 <!-- Start Page Content -->
+                <div class="card">
+                                <div class="card-body">
+                                   <h1>Hello,&nbsp;<?php echo $name[0]->name;?></h1>
+                                </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card p-30">

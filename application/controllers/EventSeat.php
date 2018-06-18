@@ -5,13 +5,23 @@ class EventSeat extends CI_Controller {
 
 	public function byID($idVenue)
 	{
+		$session_data=$this->session->userdata('logged_in');
+		$data['username']=$session_data['username'];
+		$data['level']=$session_data['level'];
+		$data['id']=$session_data['id'];
+
+		$this->load->model('user');
+		$id = $data['id'];
+		$user = $data['username'];
+		$data['name'] = $this->user->selectAll($id,$user);
+
 		$this->load->helper('url');
 		$data['idVenue'] = $idVenue;
 		$this->load->model('EventVenueModel');
 		$data['venue'] = $this->EventVenueModel->getVenue($idVenue);
 		$this->load->model('EventSeatModel');
 		$data["seat_list"] = $this->EventSeatModel->getSeatById($idVenue);
-		$this->load->view('admin/header');
+		$this->load->view('admin/header', $data);
         $this->load->view('admin/sidebar');
 		$this->load->view('admin/seatEvent', $data);
 	}
@@ -24,15 +34,9 @@ class EventSeat extends CI_Controller {
 		$data['venue'] = $this->EventVenueModel->getVenue($idVenue);
 		$this->load->model('EventSeatModel');
 		$this->EventSeatModel->insertSeat($idVenue);
-		$this->EventVenueModel->getVenue($idVenue);
 		echo "<script>alert('Successfully Created'); </script>";
-		$this->load->model('EventVenueModel');
-		$data['venue'] = $this->EventVenueModel->getVenue($idVenue);
-		$this->load->model('EventSeatModel');
-		$data["seat_list"] = $this->EventSeatModel->getSeatById($idVenue);
-		$this->load->view('admin/header');
-        $this->load->view('admin/sidebar');
-		$this->load->view('admin/seatEvent', $data);
+		$this->byID($idVenue);
+		
 	}
 
 	public function update($idVenue)
@@ -42,17 +46,11 @@ class EventSeat extends CI_Controller {
 		$this->load->model('EventVenueModel');
 		$data['idVenue'] = $idVenue;
 		$idSeat = $this->input->post('id');
+		$data["seat_list"] = $this->EventSeatModel->getSeatById($idVenue);
 		$this->EventSeatModel->updateById($idSeat);
 		$data['venue'] = $this->EventVenueModel->getVenue($idVenue);
-		$data['seat'] = $this->EventSeatModel->getSeat($idSeat);
-			//echo "<script>alert('Successfully Updated'); </script>";
-			$data['event'] = $this->EventVenueModel->getVenue($idVenue);
-			$this->load->model('EventSeatModel');
-			$data['event'] = $this->EventVenueModel->getVenue($idVenue);
-			$data["seat_list"] = $this->EventSeatModel->getSeatById($idVenue);
-			$this->load->view('admin/header');
-        	$this->load->view('admin/sidebar');
-			$this->load->view('admin/seatEvent', $data);
+		echo "<script>alert('Successfully Updated'); </script>";
+		$this->byID($idVenue);
 	}
 
 	public function deleteData($idVenue,$idSeat)
@@ -61,14 +59,8 @@ class EventSeat extends CI_Controller {
 		$this->load->model("EventSeatModel");
 		$this->EventSeatModel->delete($idSeat);
 		echo "<script>alert('Successfully Deleted'); </script>";
-		$this->load->model('EventVenueModel');
-		$this->load->model('EventSeatModel');
 		$data['idVenue'] = $idVenue;
-		$data["seat_list"] = $this->EventSeatModel->getSeatById($idVenue);
-		$data['venue'] = $this->EventVenueModel->getVenue($idVenue);
-		$this->load->view('admin/header');
-        $this->load->view('admin/sidebar');
-		$this->load->view('admin/seatEvent', $data);
+		$this->byID($idVenue);
 	}
 
 }
