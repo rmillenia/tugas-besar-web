@@ -40,6 +40,23 @@ class InputAdminModel extends CI_Model {
 
             $this->db->insert('user', $object);
     } 
+
+    public function update($id)
+    {	
+		        $level = 'admin';
+        		$pic = 'default.png';
+            	$object = array(
+                'name' => $this->input->post('name'),
+                'address' => $this->input->post('add'),
+                'phoneNumber' => $this->input->post('phone'),
+                'email' => $this->input->post('email'),
+                'username' => $this->input->post('name'),
+            );
+            $this->db->where('idUser', $id);
+            $this->db->update('user', $object);
+
+    } 
+
     public function getAdminNamebyID($id)
     {
         $this->db->where('idUser',$id);
@@ -49,8 +66,8 @@ class InputAdminModel extends CI_Model {
 
     public function deleteAdmin($id)
     {
-        $this->db->where('idArtist', $id);
-        $this->db->delete('artist');
+        $this->db->where('idUser', $id);
+        $this->db->delete('user');
     }
 
 }
