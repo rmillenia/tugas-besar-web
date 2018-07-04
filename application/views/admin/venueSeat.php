@@ -41,38 +41,83 @@
                 </div>
             </div>
 
-	<div class="container-fluid">
-		<div class="card">
+    <div class="container-fluid">
+        <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover" id="example">
-    					<thead>
-      						<th>ID Venue</th>
-      						<th>Venue Name</th>
-      						<th>City</th>
-      						<th>Country</th>
-      						<th></th>
-    					</thead>
-    					<tbody>
-      					<?php foreach ($venue_list as $key) {?>
-        				<tr>
-        					<td><?php echo $key->idVenue; ?></td>
-        					<td><?php echo $key->venue; ?></td>
-        					<td><?php echo $key->city; ?> </td>
-        					<td><?php echo $key->country; ?> </td>
-        					<td>
-        					<a href="<?php echo site_url()?>/EventSeat/byID/<?php echo $key->idVenue; ?>"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span>&nbsp;Seat Zone </button></a>
-        					</td>
-    					</tr>
-      					<?php } ?>
-    					</tbody>
-  					</table>
-				</div>
-			</div>
-		</div>
-	</div>
+                        <thead>
+                            <th>ID Venue</th>
+                            <th>Venue Name</th>
+                            <th>City</th>
+                            <th>Country</th>
+                            <th> </th>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($venue_list as $key) {?>
+                        <tr>
+                            <td><?php echo $key->idVenue; ?></td>
+                            <td><?php echo $key->venue; ?></td>
+                            <td><?php echo $key->city; ?> </td>
+                            <td><?php echo $key->country; ?> </td>
+                            <td>
+                            <td>
+                            <a href="javascript:void(0);" data-id="<?php echo $key->idVenue ; ?>" data-pict="<?php echo $key->photo ; ?>" data-toggle="modal" data-target="#edit-data">
+                            <button  data-toggle="modal" data-target="#ubah-data" class="btn btn-primary"><span class="fa fa-plus"></span>&nbsp;Add Photo</button></a>
+                            <a href="<?php echo site_url()?>/EventSeat/byID/<?php echo $key->idVenue; ?>"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span>&nbsp;Seat Zone </button></a>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	
+        <!-- Modal Ubah -->
+    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="edit-data" class="modal fade-in">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Data</h4>
+                </div>
+                 <?php echo form_open_multipart('HomeVenue/updatePhoto'); ?>
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <label class="col-lg-2 col-sm-2 control-label">Photo</label>
+                                <div class="col-lg-12">
+                                    <input type="hidden" class="form-control" id="id" name="id">
+                                    <input type="file" class="form-control" id="pict" name="pict">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-info" type="submit"> Save&nbsp;</button>
+                            <button type="button" class="btn btn-warning" data-dismiss="modal"> Cancel</button>
+                        </div>
+                    <?php echo form_close();?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Modal Ubah -->
+    <script>
+        $(document).ready(function() {
+            // Untuk sunting
+            $('#edit-data').on('show.bs.modal', function (event) {
+                var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+                var modal          = $(this)
+ 
+                // Isi nilai pada field
+                modal.find('#id').attr("value",div.data('id'));
+                modal.find('#pict').attr("value",div.data('pict'));
+            });
+        });
+    </script>
+
+
+    
     <!-- Bootstrap tether Core JavaScript -->
 
    <script src="<?php echo base_url();?>assets/awal/js/lib/bootstrap/js/popper.min.js"></script>

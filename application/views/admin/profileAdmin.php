@@ -41,8 +41,8 @@
                 </div>
             </div>
 
-	<div class="container-fluid">
-		<div class="card">
+  <div class="container-fluid">
+    <div class="card">
             <div class="card-body">
                 <h1>Edit Profile</h1>
     <hr>
@@ -66,7 +66,6 @@
         <?php if(!empty(validation_errors())){ ?>
         <div class="alert alert-info alert-dismissable">
           <a class="panel-close close" data-dismiss="alert">×</a> 
-          <i class="fa fa-coffee"></i>
           <?php echo validation_errors(); ?>
         </div>
           <?php }?>
@@ -122,11 +121,11 @@
       </div>
   </div>
 <hr>
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 
-	
+  
     <!-- Bootstrap tether Core JavaScript -->
 
    <script src="<?php echo base_url();?>assets/awal/js/lib/bootstrap/js/popper.min.js"></script>
@@ -143,12 +142,6 @@
     <!-- scripit init-->
 
     <script src="<?php echo base_url();?>assets/awal/js/custom.min.js"></script>
-
-<script type="text/javascript">
-      $(document).ready(function() {
-        $('#example').DataTable();
-      });
-    </script>
 
 </body>
 </html>

@@ -44,13 +44,16 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
+                <a href="<?php echo site_url()?>/EventSchedule/createpdf"><button type="button" class="btn btn-primary float-right"><span class="fa fa-plus"></span>&nbsp;Create Pdf</button></a>
+
                 <div class="table-responsive">
                     <table class="table table-hover" id="example">
                         <thead>
-                            <th>ID Schedule</th>
-                            <th>Event Name</th>
+                            <th style="width: 50">ID</th>
+                            <th style="width: 50">Event Name</th>
                             <th>Date</th>
                             <th>Time</th>
+                            <th>Venue</th>
                             <th> </th>
                         </thead>
                         <tbody>
@@ -59,13 +62,14 @@
                             <td><?php echo $key->idSchedule; ?></td>
                             <td><?php echo $key->name; ?></td>
                             <td><?php echo $key->date; ?></td>
-                            <td><?php echo $key->startTime; ?> - <?php echo $key->endTime; ?></td>
+                            <td><?php echo $key->startTime; ?></td>
+                            <td><?php echo $key->venue; ?></td>
                             <td>
                             <a href="<?php echo site_url()?>/EventSchedule/getDataID/<?php echo $key->idSchedule;?>"><button type="button" class="btn btn-primary">&nbsp;Detail</button></a>
 
                             <a href="<?php echo site_url()?>/EventPrice/byID/<?php echo $key->idSchedule;?>"><button type="button" class="btn btn-primary"><span class="fa fa-search"></span>&nbsp;Price</button></a>
 
-                            <a href="<?php echo site_url()?>/EventSchedule/deleteData/<?php echo $key->idSchedule;?>"><button type="button" class="btn btn-primary" onclick="return confirm('Are you sure to delete this data permanently?');"><span class="fa fa-trash"></span>&nbsp;Delete</button></a>
+                            <a href="<?php echo site_url()?>/EventSchedule/deleteData/<?php echo $key->idSchedule;?>"><button type="button" class="btn btn-primary" style="height: 21px" onclick="return confirm('Are you sure to delete this data permanently?');"><span class="fa fa-trash"></span></button></a>
 
                             </td>
                         </tr>

@@ -42,44 +42,46 @@
                 </div>
             </div>
 
-	<div class="container-fluid">
-		<div class="card">
-			<div class="card-title">
-				
-			</div>
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-title">
+                
+            </div>
             <div class="card-body">
-           		<div class="form-group text-right">
-					<button data-toggle="modal" data-target="#tambah-data" class="btn btn-outline-secondary"><span class="fa fa-plus"></span> Add</button>
-				</div>
+                <div class="form-group text-right">
+                    <button data-toggle="modal" data-target="#tambah-data" class="btn btn-outline-secondary"><span class="fa fa-plus"></span> Add</button>
+                </div>
                 <div class="table-responsive">
-                    <table class="table" id="example">	
-						<thead>
-							<tr>
-								<th>Seat Zone Name</th>
-								<th>Available Ticket</th>
+                    <table class="table" id="example">  
+                        <thead>
+                            <tr>
+                                <th>Seat Zone Name</th>
+                                <th>Available Ticket</th>
+                                <th>Remains Ticket</th>
                                 <th>Price</th>
                                 <th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php foreach ($price_list as $key){ ?>
-							<tr>
-							<td><?php echo $key->seatZone ; ?></td>
-							<td><?php echo $key->availableTicket ; ?></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($price_list as $key){ ?>
+                            <tr>
+                            <td><?php echo $key->seatZone ; ?></td>
+                            <td><?php echo $key->availableTicket ; ?></td>
+                            <td><?php echo $key->remainTicket ; ?></td>
                             <td><?php echo $key->price ; ?></td>
                             <td>
                                 <a href="javascript:void(0);" data-id="<?php echo $key->idPrice ; ?>" data-seat="<?php echo $key->seat_id ; ?>" data-name="<?php echo $key->seatZone ; ?>" data-cap="<?php echo $key->availableTicket ; ?>" data-price="<?php echo $key->price ; ?>"  data-toggle="modal" data-target="#edit-data">
                                     <button  data-toggle="modal" data-target="#ubah-data" class="btn btn-secondary"><span class="fa fa-edit"></span></button></a>
                                 <a href="<?php echo base_url("index.php/EventPrice/deleteData/".$idSchedule."/".$key->idPrice) ?>" class="btn btn-danger" onclick="return confirm('Are you sure to delete this data permanently?'); "><span class="fa fa-trash"></span></a>
                             </td>
-							</tr>
-							<?php } ?>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Modal Tambah -->

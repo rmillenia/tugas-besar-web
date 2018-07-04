@@ -45,7 +45,8 @@
 	<div class="container-fluid">
 		<div class="card">
 			<div class="card-title">
-				Venue : &nbsp;<?php echo $venue[0]->venue ?>
+				Venue : &nbsp;<?php echo $venue[0]->venue ?><br>
+				<center><img src="<?php echo base_url()?>/assets/imgEvent/<?php echo $venue[0]->photo ?>" width="500"></center>
 			</div>
             <div class="card-body">
            		<div class="form-group text-right">

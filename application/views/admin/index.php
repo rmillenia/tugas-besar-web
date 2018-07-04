@@ -83,11 +83,11 @@
                         <div class="card p-30">
                             <div class="media">
                                 <div class="media-left meida media-middle">
-                                    <span><i class="fa fa-archive f-s-40 color-warning"></i></span>
+                                    <span><i class="fa fa-ticket f-s-40 color-warning"></i></span>
                                 </div>
                                 <div class="media-body media-text-right">
                                     <h2>25</h2>
-                                    <p class="m-b-0">Stores</p>
+                                    <p class="m-b-0">Total Tickets</p>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                     <!-- column -->
                     <div class="col-lg-4">
                         <div class="card">
-                            <h4>Available Ticket</h4>
+                            <h4>Available Ticket in This Month</h4>
                             <hr>
                             <div class="card-body browser">
                                 <p class="f-w-600">iMacs <span class="pull-right">85%</span></p>
@@ -145,7 +145,7 @@
                                     <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-warning wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
                                 </div>
 
-								<p class="m-t-30 f-w-600">android<span class="pull-right">65%</span></p>
+                                <p class="m-t-30 f-w-600">android<span class="pull-right">65%</span></p>
                                 <div class="progress m-b-30">
                                     <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-success wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
                                 </div>
@@ -273,7 +273,7 @@
     <!--Custom JavaScript -->
 
 
-	<script src="<?php echo base_url();?>assets/awal/js/lib/calendar-2/moment.latest.min.js"></script>
+    <script src="<?php echo base_url();?>assets/awal/js/lib/calendar-2/moment.latest.min.js"></script>
     <!-- scripit init-->
     <script src="<?php echo base_url();?>assets/awal/js/lib/calendar-2/semantic.ui.min.js"></script>
     <!-- scripit init-->
