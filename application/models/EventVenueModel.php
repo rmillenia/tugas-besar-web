@@ -44,8 +44,15 @@ class EventVenueModel extends CI_Model {
         $this->db->update('eventvenue', $data);
     }
 
-	
+    public function updatePic($id)
+    {
 
+        $data = array(
+            'photo'          => $this->upload->data('file_name')
+        );
+         $this->db->where('idVenue', $id);
+        $this->db->update('eventvenue', $data);
+    }
 }
 
 /* End of file EventVenueModel.php */
