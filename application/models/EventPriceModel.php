@@ -5,7 +5,7 @@
 	{
 		public function getPriceById($id)
 		{
-			$query = $this->db->query("SELECT * from eventprice as p inner join eventseat as s on p.seat_id = s.idSeat inner join eventschedule as d on p.schedule_id = '$id' and s.venue_id = d.venue_id");
+			$query = $this->db->query("SELECT * from eventprice as p inner join eventseat as s on p.seat_id = s.idSeat inner join eventschedule as d on p.schedule_id = '$id' and s.venue_id = d.venue_id group by p.seat_id");
 			return $query->result();
 		}
 
@@ -22,6 +22,7 @@
 				'seat_id' => $fkId,
 				'schedule_id' => $id,
 				'availableTicket' => $this->input->post('cap'),
+				'remainTicket'  => $this->input->post('cap'),
 				'price' => $this->input->post('price')
 					);
 			$this->db->insert('eventprice', $object);
