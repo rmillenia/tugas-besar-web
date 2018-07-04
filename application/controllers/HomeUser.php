@@ -11,8 +11,45 @@ class HomeUser extends CI_Controller {
  		$result['count'] = $this->mcountdown->count_time();
  		$result['sche'] = $this->mcountdown->getAllSche();
  		$result['ticket'] = $this->mcountdown->getTicket();
- 		$this->load->view('user/header',$result);
-        $this->load->view('user/home' , $result);
-        $this->load->view('user/footer',$result);
+ 		
+ 		$this->load->model('EventScheduleModel');
+                $data["artist_list"] = $this->EventScheduleModel->getArtistOption();
+                $data["cat_list"] = $this->EventScheduleModel->getCatOption();
+                $id = $this->input->post('id');
+                $data["schedule"] = $this->EventScheduleModel->getSchedule($id);
+
+
+	        if($this->session->userdata('logged_in')){
+	        $session_data=$this->session->userdata('logged_in');
+                $data['username']=$session_data['username'];
+                $data['level']=$session_data['level'];
+                $data['id']=$session_data['id'];
+                $this->load->view('user/header',$data);
+                $this->load->view('user/home' , $data);
+                $this->load->view('user/footer',$data);
+
+		}else{
+		$this->load->view('user/header',$data);
+                $this->load->view('user/home' , $data);
+                $this->load->view('user/footer',$data);
 		}
+
+	}
+
+	public function allEvent(){
+                $session_data=$this->session->userdata('logged_in');
+                $data['username']=$session_data['username'];
+                $data['level']=$session_data['level'];
+                $data['id']=$session_data['id'];
+                $this->load->model('SearchModel');
+                $this->load->model('EventScheduleModel');
+                $data["artist_list"] = $this->EventScheduleModel->getArtistOption();
+                $data["cat_list"] = $this->EventScheduleModel->getCatOption();
+                $data['search']=$this->SearchModel->allEvents();
+                $data['detail'] = 'All Event';
+                $this->load->view('user/headerAllEvent',$data);
+		$this->load->view('user/allEvent',$data);
+		$this->load->view('user/footer');
+	}
+	
  }
