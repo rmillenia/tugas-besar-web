@@ -53,6 +53,36 @@ class HomeVenue extends CI_Controller {
         $this->EventVenueModel->updateVenue($id);
     }
 
+    public function updatePhoto(){
+        $this->load->helper('url','form');
+        $this->load->library('form_validation');
+        $this->load->model('EventVenueModel');
+
+        $session_data=$this->session->userdata('logged_in');
+        $data['username']=$session_data['username'];
+        $data['level']=$session_data['level'];
+        $data['id']=$session_data['id'];
+        $id = $this->input->post('id'); 
+        
+        $config['upload_path']='./assets/imgEvent/';
+        $config['allowed_types']='gif|jpg|png';
+        $config['max_size']=1000000000;
+        $config['max_width']=10240;
+        $config['max_height']=7680;
+
+        $this->load->library('upload', $config);
+        if (! $this->upload->do_upload('pict')) {
+                redirect('EventVenue','refresh');
+                
+        }else{
+                $this->EventVenueModel->updatePic($id);
+                echo "<script>alert('Successfully Updated'); </script>";
+                redirect('EventVenue','refresh');
+        }
+    }
+
+
+
 }
 
 /* End of file Home.php */
