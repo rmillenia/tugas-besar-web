@@ -5,13 +5,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class HomeUser extends CI_Controller {
 
 	public function lihat(){
-    	$this->load->model('mcountdown');
- 		$result['timer'] = $this->mcountdown->select_time();
- 		$result['name'] = $this->mcountdown->select_name();
- 		$result['count'] = $this->mcountdown->count_time();
- 		$result['sche'] = $this->mcountdown->getAllSche();
- 		$result['ticket'] = $this->mcountdown->getTicket();
- 		
+		$this->load->model('mcountdown');
+ 		$data['timer'] = $this->mcountdown->select_time();
+ 		$data['name'] = $this->mcountdown->select_name();
+ 		$data['count'] = $this->mcountdown->count_time();
+ 		$data['sche'] = $this->mcountdown->getAllSche();
+ 		$data['ticket'] = $this->mcountdown->getTicket();
+
  		$this->load->model('EventScheduleModel');
                 $data["artist_list"] = $this->EventScheduleModel->getArtistOption();
                 $data["cat_list"] = $this->EventScheduleModel->getCatOption();
@@ -33,7 +33,6 @@ class HomeUser extends CI_Controller {
                 $this->load->view('user/home' , $data);
                 $this->load->view('user/footer',$data);
 		}
-
 	}
 
 	public function allEvent(){
@@ -51,5 +50,4 @@ class HomeUser extends CI_Controller {
 		$this->load->view('user/allEvent',$data);
 		$this->load->view('user/footer');
 	}
-	
  }
