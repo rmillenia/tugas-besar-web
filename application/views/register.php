@@ -23,16 +23,46 @@
         <div class="login100-pic js-tilt" data-tilt>
           <img src="<?php echo base_url();?>assets/img/logos.png" alt="IMG">
         </div>
-        <?php echo form_open('Login/cekLogin','class = "login100-form" '); ?>
+        <?php echo form_open('Register/create','class = "login100-form" '); ?>
           <span class="login100-form-title">
-           Login
+           Register
           </span>
           <?php if(!empty(validation_errors())){ ?>
         <div class="alert alert-warning alert-dismissable">
           <a class="panel-close close" data-dismiss="alert">×</a> 
           <?php echo validation_errors(); ?>
-        </div>
-          <?php }?>
+            </div>
+            <?php } ?>
+          <div class="wrap-input100">
+            <input class="input100" type="text" name="name" placeholder="Full Name">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-user" aria-hidden="true"></i>
+            </span>
+          </div>
+          <div class="wrap-input100">
+            <input class="input100" type="text" name="add" placeholder="Address">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+            </span>
+          </div>
+          <div class="wrap-input100">
+            <input class="input100" type="text" name="phone" placeholder="Phone Number">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+            </span>
+          </div>
+
+          <div class="wrap-input100">
+            <input class="input100" type="text" name="email" placeholder="Email">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+          </div>
+
           <div class="wrap-input100">
             <input class="input100" type="text" name="username" id="username" placeholder="username">
             <span class="focus-input100"></span>
@@ -51,13 +81,13 @@
           
           <div class="container-login100-form-btn">
             <button class="login100-form-btn" type="submit">
-              Login
+              Register
             </button>
           </div>
-
-          <div class="text-center p-t-136">
-            <a class="txt2" href="<?php echo site_url();?>/Register">
-              Create your Account
+            <br>
+          <div class="text-center">
+            <a class="txt2" href="<?php echo site_url()?>/Login">
+              Already have a Account?
               <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
             </a>
           </div>

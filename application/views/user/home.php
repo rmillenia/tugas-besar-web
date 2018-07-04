@@ -37,7 +37,7 @@
 								<?php if(is_array($name)){?>
                   					<?php foreach ($name as $key) {?>
                   					<h1 class="mb-10">Ticket for <?php echo $key->name ; ?> </h1>
-                  					<p>Who are in extremely love with <?php echo $key->artist ; ?>.</p>
+                  					<p style="color: black">Who are in extremely love with <?php echo $key->artist ; ?>.</p>
 									<?php }}else{?>
 									<h1 class="mb-10">There is No Upcoming Event's Ticket</h1>
 								<?php }?>
@@ -66,12 +66,20 @@
 								<a class="price-btn text-uppercase" href="#">Buy Now</a>
 							</div>
 						</div>
-						<?php }}else{ ?>
-							<center><h3></h3></center>
-							<?php }}?>
+
+						<?php }?>
+
 						</div>			
 				</div>	
 			</section>
+					<?php }else{ ?>
+					</div>
+							<div class="title text-center"><h3 class="mb-10" style="color: #f4bd00">Ticket is not available</h3></div>
+
+				</div>	
+			</section>
+							<?php }}?>
+						
 			<!-- End price Area -->
 			
 		<?php if (is_array($sche)) { ?>
@@ -93,7 +101,7 @@
 											<img src="<?php echo base_url();?>assets/imgEvent/<?php echo $key->picture ?>" height ="430" alt="">
 										</div>
 										<div class="col-md-6 speaker-info no-padding">
-											<h6 class="text-uppercase"><?php echo $key->name; ?></h6>
+											<h6 class="text-uppercase"><?php echo $key->name; ?> In <?php echo $key->city; ?></h6>
 											<h3 class="text-white"><?php echo $key->category; ?></h3><br>
 											<font size="4">
 											<p>
@@ -103,7 +111,10 @@
 												End Time&nbsp;&nbsp;&nbsp;: <b><?php echo $key->endTime; ?></b><br>
 											</p>
 											</font>
-											<span class="fas fa-map-marker"></span><?php echo $key->venue; ?>,&nbsp;<?php echo $key->city; ?>,&nbsp;<?php echo $key->country; ?>
+											<?php echo $key->venue; ?>,&nbsp;<?php echo $key->city; ?>,&nbsp;<?php echo $key->country; ?>
+											<br><br>
+											
+											
 											<ul>
 												<a href="#"><i class="fa fa-facebook fa-2x"></i></a>
 												<a href="#"><i class="fa fa-twitter fa-2x"></i></a>
@@ -111,7 +122,8 @@
 												<a href="#"><i class="fa fa-behance fa-2x"></i></a>
 											</ul>
 											<br>
-											<a href="<?php echo site_url()?>/Event/delete/<?php echo $key->idSchedule; ?>" class="ticker-btn">Buy Ticket</a>
+											<a href="javascript:void(0);" data-id="<?php echo $key->idSchedule ; ?>" data-toggle="modal" data-target="#edit-data">
+                            				<button type="submit" data-toggle="modal" data-target="#ubah-data" class="btn btn-secondary">See Details <?php echo $key->idSchedule ; ?></button></a>
 										</div>
 									</div>
 								</div>								
@@ -130,8 +142,100 @@
 							<center><h3>There's no upcoming events</h3></center>
 							<?php }?>	
 					</section>
+
+
+<section id="topEvent" class="pb-100">
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<center><h1>Top Events In Indonesia</h1></center>
+			<br>
+			<table class="table">
+  				<thead class="thead-dark">
+  					
+				    <tr>
+				      <th scope="col">No.</th>
+				      <th scope="col">Nama</th>
+				      <th scope="col">Jenis Kelamin</th>
+				    </tr>
+				  </thead>
+				  <tbody style="color: black">
+				    <tr>
+				      <th scope="row">1</th>
+				      <td>Muhammad</td>
+				      <td>Laki-laki</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">2</th>
+				      <td>Aisyah</td>
+				      <td>Perempuan</td>
+				    </tr>
+				 	<tr>
+				      <th scope="row">3</th>
+				      <td>Fatimah</td>
+				      <td>Perempuan</td>
+				    </tr>
+				  </tbody>
+				</table>
+		</div>
+		<div class="col-md-6">
+			<center><h1>Top International Events</h1></center>
+			<br>
+			<table class="table">
+  				<thead class="thead-dark">
+				    <tr>
+				      <th scope="col">No.</th>
+				      <th scope="col">Nama</th>
+				      <th scope="col">Jenis Kelamin</th>
+				    </tr>
+				  </thead>
+				  <tbody style="color: black">
+				    <tr>
+				      <th scope="row">1</th>
+				      <td>Muhammad</td>
+				      <td>Laki-laki</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">2</th>
+				      <td>Aisyah</td>
+				      <td>Perempuan</td>
+				    </tr>
+				 	<tr>
+				      <th scope="row">3</th>
+				      <td>Fatimah</td>
+				      <td>Perempuan</td>
+				    </tr>
+				  </tbody>
+				</table>
+		</div>
+		
+	</div>
+</div>
+</section>
+
 			<!-- End speakers Area -->
-			
+
+<!-- Modal Ubah -->
+	<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="edit-data" class="modal fade">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h4 class="modal-title">Update Data</h4>
+	            </div>
+	             <?php echo form_open_multipart(); ?>
+		            <div class="modal-body">
+		            	<input type="text" id="id" name="id">
+		            	<?php foreach ($schedule as $key) {?>
+		            		<h1><?php echo $key->name ?></h1>
+		            	<?php } ?>
+		                </div>
+	                <?php echo form_close();?>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- END Modal Ubah -->
+
 <script>
 
 // Set the date we're counting down to

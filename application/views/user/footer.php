@@ -10,8 +10,8 @@
 								</p>
 								<p class="footer-text">
 									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart3" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+									Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart3" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 								</p>								
 							</div>
 						</div>
@@ -57,7 +57,20 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<script src="<?php echo base_url();?>assets/assets/js/jquery.ajaxchimp.min.js"></script>
 			<script src="<?php echo base_url();?>assets/assets/js/jquery.magnific-popup.min.js"></script>	
 			<script src="<?php echo base_url();?>assets/assets/js/owl.carousel.min.js"></script>			
-			<script src="<?php echo base_url();?>assets/assets/js/main.js"></script>	
+			<script src="<?php echo base_url();?>assets/assets/js/main.js"></script>
+
+			<script>
+	    $(document).ready(function() {
+	        // Untuk sunting
+	        $('#edit-data').on('show.bs.modal', function (event) {
+	            var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+	            var modal          = $(this)
+ 
+	            // Isi nilai pada field
+	            modal.find('#id').attr("value",div.data('id'));
+	        });
+	    });
+	</script>	
 
 
 		</body>

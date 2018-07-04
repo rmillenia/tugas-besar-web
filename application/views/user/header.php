@@ -50,16 +50,38 @@
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
-				          <li class="menu-active"><a href="#home">Home</a></li>
-				          <li><a href="#price">Latest Ticket</a></li>
+				          <li class="menu-active"><a href="<?php echo site_url();?>/HomeUser/lihat">Home</a></li>
 				          <li><a href="#speakers">Latest Event</a></li>
-				          <li><a href="#schedule">All Event</a></li>
-				          <li class="menu-has-children"><a href="">Account</a>
-				            <ul>
-				              <li><a href="<?php echo site_url();?>/Login">Login</a></li>
-				              <li><a href="elements.html">Register</a></li>
-				            </ul>
-				          </li>
+                    <li class="menu-has-children"><a href="<?php echo site_url();?>/HomeUser/allEvent">All Event</a>
+                        <ul>
+                        <div class="col-md-6 text-left text-uppercase">
+                          <b><p style="color: black">Category</p></b>
+                          <?php foreach ($cat_list as $key) {?>
+                          <li><a href="<?php echo site_url();?>/Search/byCat/<?php echo $key->idCat;?>"><?php echo $key->category;?></a></li>
+                          <?php }?>
+                        </div>
+                        <br>
+                        <div class="col-md-6 text-left text-uppercase">
+                          <b><p style="color: black">Artist</p></b>
+                          <?php foreach ($artist_list as $key) {?>
+                          <li><a href="<?php echo site_url();?>/Search/byArtist/<?php echo $key->idArtist;?>"><?php echo $key->artist;?></a></li>
+                          <?php }?>
+                        </div>
+                        </ul>
+                  </li>
+
+                  <li class="menu-has-children"><a href=""><?php if(empty($username)){ ?>Account<?php }else{?><span class="fa fa-user"></span>&nbsp;<?php echo $username;}?></a>
+                        <ul>
+                          <?php if(empty($username)){ ?>
+                          <li><a href="<?php echo site_url();?>/Login">Login</a></li>
+                          <li><a href="<?php echo site_url();?>/Register">Register</a></li>
+                           <?php }else{?>
+                          <li><a href="<?php echo site_url();?>/UserDetail">Profile</a></li>
+                          <li><a href="<?php echo site_url();?>/Login/logout">Logout</a></li>
+                          <?php }?>
+                        </ul>
+                  </li>
+
 				          <li><a class="ticker-btn" href="#"><span class="fa fa-lg fa-shopping-cart"></span></a></li>
 				        </ul>
 				      </nav><!-- #nav-menu-container -->		    		
