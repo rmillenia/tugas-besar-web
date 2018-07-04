@@ -134,4 +134,12 @@ class EventSchedule extends CI_Controller {
 		
     }
 
+    public function createPdf()
+    {
+    	$this->load->model('EventScheduleModel');
+		$data["sche_list"] = $this->EventScheduleModel->getAllSche();
+		$this->load->library('pdf');
+        $this->pdf->load_view('report/schedule',$data);
+    }
+
 }
