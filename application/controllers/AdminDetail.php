@@ -23,10 +23,15 @@ class AdminDetail extends CI_Controller {
 	}
 
 	public function updatePhoto(){
-		{
         $this->load->helper('url','form');
         $this->load->library('form_validation');
-        $this->load->model('EventArtistModel');
+        $this->load->model('InputAdminModel');
+
+        $session_data=$this->session->userdata('logged_in');
+        $data['username']=$session_data['username'];
+        $data['level']=$session_data['level'];
+        $data['id']=$session_data['id'];
+        $id = $data['id'];
         
 
         if ($this->form_validation->run()==FALSE){
@@ -41,17 +46,37 @@ class AdminDetail extends CI_Controller {
 
             $this->load->library('upload', $config);
             if (! $this->upload->do_upload('pic')) {
-                $this->EventArtistModel->updateno($id);
-                echo "<script>alert('Successfully Updated'); </script>";
-                redirect('EventArtist','refresh');
+                redirect('AdminDetail','refresh');
                 
             }else{
                 
-                $this->EventArtistModel->updateArtist($id);
+                $this->EventArtistModel->updatePic($id);
                 echo "<script>alert('Successfully Updated'); </script>";
-                redirect('EventArtist','refresh');
+                redirect('AdminDetail','refresh');
         	}
     	}
+	}
+
+		public function update()
+	{
+		$this->load->model('InputAdminModel');
+
+		$session_data=$this->session->userdata('logged_in');
+        $data['username']=$session_data['username'];
+        $data['level']=$session_data['level'];
+        $data['id']=$session_data['id'];
+        $id = $data['id'];
+
+        $pass = $this->input->post('password');
+        if(empty($pass)){
+        	$this->InputAdminModel->updateNoPass($id);
+			echo "<script>alert('Successfully Updated'); </script>";
+			redirect('AdminDetail','refresh');
+        }else{
+        	$this->InputAdminModel->updateProfile($id);
+			echo "<script>alert('Successfully Updated'); </script>";
+			redirect('AdminDetail','refresh');
+        }
 	}
 
 }

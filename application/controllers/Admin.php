@@ -18,8 +18,7 @@ class Admin extends CI_Controller {
                     redirect($_SERVER['HTTP_REFERER'],'refresh');
                 }
             }
-        }
-        else{
+        }else{
 
             redirect('Login','refresh');
         }
@@ -53,8 +52,6 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('add', 'Address', 'trim|required');
         $this->form_validation->set_rules('phone', 'Phone Number', 'trim|required');
         $this->form_validation->set_rules('email', 'Email', 'trim|required');
-        $this->form_validation->set_rules('username', 'Username', 'trim|required');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
         if ($this->form_validation->run()==FALSE){
             echo validation_errors();
         }else{
@@ -62,42 +59,6 @@ class Admin extends CI_Controller {
                 echo "<script>alert('Successfully Created'); </script>";
                 redirect('Admin','refresh');
         }
-    }
-
-    public function update()
-    {
-        $this->form_validation->set_rules('name', 'Name', 'trim|required');
-        $this->form_validation->set_rules('add', 'Address', 'trim|required');
-        $this->form_validation->set_rules('phone', 'Phone Number', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required');
-        $this->form_validation->set_rules('username', 'Username', 'trim|required');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
-        
-        $id = $this->input->post('id');
-
-        if ($this->form_validation->run()==FALSE){
-
-        }else{
-
-            $config['upload_path']='./assets/imgEvent/';
-            $config['allowed_types']='gif|jpg|png';
-            $config['max_size']=1000000000;
-            $config['max_width']=10240;
-            $config['max_height']=7680;
-
-            $this->load->library('upload', $config);
-            if (! $this->upload->do_upload('pic')) {
-                $this->InputAdminModel->updateno($id);
-                echo "<script>alert('Successfully Updated'); </script>";
-                redirect('Admin','refresh');
-                
-            }else{
-                
-                $this->InputAdminModel->updateAdmin($id);
-                echo "<script>alert('Successfully Updated'); </script>";
-                redirect('Admin','refresh');
-        	}
-    	}
     }
 
     public function delete($id)

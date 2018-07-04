@@ -41,21 +41,48 @@ class InputAdminModel extends CI_Model {
             $this->db->insert('user', $object);
     } 
 
-    public function update($id)
+    public function updateNoPass($id)
     {	
-		        $level = 'admin';
-        		$pic = 'default.png';
             	$object = array(
                 'name' => $this->input->post('name'),
                 'address' => $this->input->post('add'),
                 'phoneNumber' => $this->input->post('phone'),
                 'email' => $this->input->post('email'),
-                'username' => $this->input->post('name'),
+                'username' => $this->input->post('username'),
+            );
+            $this->db->where('idUser', $id);
+            $this->db->update('user', $object);
+
+    }
+
+    public function updateProfile($id)
+    {	
+    	$password = $this->input->post('password');
+        $pass = md5($password);
+
+            	$object = array(
+                'name' => $this->input->post('name'),
+                'address' => $this->input->post('add'),
+                'phoneNumber' => $this->input->post('phone'),
+                'email' => $this->input->post('email'),
+                'username' => $this->input->post('username'),
+                'password' => $pass,
             );
             $this->db->where('idUser', $id);
             $this->db->update('user', $object);
 
     } 
+
+    public function updatePic($id)
+    {	
+            	$object = array(
+                'pictureUser' => $this->upload->data('file_name')
+            );
+            $this->db->where('idUser', $id);
+            $this->db->update('user', $object);
+
+    }
+
 
     public function getAdminNamebyID($id)
     {
