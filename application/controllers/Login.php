@@ -58,28 +58,4 @@
                 }
             }
         }
-
-        public function registrasi()
-        {
-            $this->load->view('registrasiView');
-        }
-
-        public function create()
-        {
-        $this->load->library('form_validation');
-        $this->load->model('User');
-        $this->form_validation->set_rules('username', 'Username', 'trim|required');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
-        $this->form_validation->set_rules('level', 'Level', 'trim|required');
-
-        if ($this->form_validation->run() == FALSE)
-        {
-            $this->load->view('registrasiView');
-        } else {
-                $this->User->insertUser();
-                echo '<script>alert("Successfully Registered")</script>';
-                redirect('Login','refresh');
-            }
-
-    }
 }
