@@ -41,13 +41,15 @@ class User extends CI_Model {
 
             );
 
-            $this->db->insert('user', $object);
+            $insert = $this->db->insert('user', $object);
+            if (!$insert && $this->db->_error_number()==1062) {
+                        echo "<script>alert('Username is already used'); </script>";
+                }          
     }
 
-    public function selectAll($id,$username){
+    public function selectAll($id){
         $this->db->select('*');
         $this->db->from('user');
-        $this->db->where('username', $username);
         $this->db->where('idUser', $id);
         $query = $this->db->get();
         if($query->num_rows()==1){
@@ -57,6 +59,68 @@ class User extends CI_Model {
         }                        
     }
 
+    public function register($username){
+        $this->db->select('username');
+        $this->db->from('user');
+        $this->db->where('username', $username);
+        $query = $this->db->get();
+        if($query->num_rows()==1){
+            return $query->result();
+        }else{
+            return false;
+        } 
+    } 
+
+        public function getUser()
+    {
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('level', 'user');
+        $query = $this->db->get();
+        if($query->num_rows()>0){
+            return $query->result();
+        }else{
+            return false;
+        }                        
+    }   
+
+        public function updateNoPass($id)
+    {   
+                $object = array(
+                'name' => $this->input->post('name'),
+                'address' => $this->input->post('add'),
+                'phoneNumber' => $this->input->post('phone'),
+                'email' => $this->input->post('email'),
+                'username' => $this->input->post('username'),
+            );
+            $this->db->where('idUser', $id);
+            $this->db->update('user', $object);
+
+    }  
+
+    public function updatePass($id)
+    {   
+        $password = $this->input->post('password');
+        $pass = md5($password);
+
+                $object = array(
+                'password' => $pass
+            );
+            $this->db->where('idUser', $id);
+            $this->db->update('user', $object);
+
+    }
+
+    public function updatePic($id)
+    {   
+                $object = array(
+                'pictureUser' => $this->upload->data('file_name')
+            );
+            $this->db->where('idUser', $id);
+            $this->db->update('user', $object);
+
+    }
+              
 
 
 
