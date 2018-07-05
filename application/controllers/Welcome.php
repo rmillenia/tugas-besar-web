@@ -15,9 +15,19 @@ class Welcome extends CI_Controller {
 		$data['id']=$session_data['id'];
 
 		$this->load->model('user');
+		$this->load->model('HomeAdmin');
+
 		$id = $data['id'];
 		$user = $data['username'];
-		$data['name'] = $this->user->selectAll($id,$user);
+		$data['name'] = $this->user->SelectAll($id,$user);
+		$data['countUser'] = $this->HomeAdmin->getCountUser();
+		$data['countTicket'] = $this->HomeAdmin->getCountTicket();
+		$data['allTicket'] = $this->HomeAdmin->getAllTicket();
+
+		//$this->load->model('user');
+		//$id = $data['id'];
+		//$user = $data['username'];
+		//$data['name'] = $this->user->selectAll($id,$user);
 
 		$this->load->view('admin/header',$data);
 		$this->load->view('admin/sidebar');
