@@ -1,0 +1,471 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 10, 2018 at 06:22 AM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.1.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `tubes1`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `artist`
+--
+
+CREATE TABLE `artist` (
+  `idArtist` int(11) NOT NULL,
+  `artist` varchar(255) NOT NULL,
+  `gender` enum('Female','Male') NOT NULL,
+  `birthdate` date NOT NULL,
+  `picture` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `artist`
+--
+
+INSERT INTO `artist` (`idArtist`, `artist`, `gender`, `birthdate`, `picture`) VALUES
+(1, 'Ariana Grande', 'Female', '2018-01-01', 'ariana.jpg'),
+(2, 'Justin Bieber', 'Male', '1990-08-02', 'bCps4HFV_400x400.jpg'),
+(4, 'Paramore', 'Male', '2018-06-12', 'download.jpg'),
+(5, 'Selena Gomez', 'Female', '2018-06-04', 'Selena-Gomez-2018-Album-Details.jpg'),
+(6, 'Exo', 'Male', '2018-06-15', 'exo.jpg'),
+(7, 'Taylor Swift', 'Female', '2018-06-04', 'taylor-swift-2017-mert-marcus-111.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eventcategory`
+--
+
+CREATE TABLE `eventcategory` (
+  `idCat` int(11) NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `eventcategory`
+--
+
+INSERT INTO `eventcategory` (`idCat`, `category`, `description`) VALUES
+(1, 'Music', 'Is all about the rhythmmm');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eventname`
+--
+
+CREATE TABLE `eventname` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(1000) NOT NULL,
+  `pict` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `eventname`
+--
+
+INSERT INTO `eventname` (`id`, `name`, `description`, `pict`) VALUES
+(1, 'Paramore After Laughter Tour', 'wawwwwwwwwaw', 'After_Laughter_Tour_Poster.jpg'),
+(8, 'Purpose Tour', 'kakaaaakaaaaa', 'JustinBieber-500x5001.jpg'),
+(9, 'Dangerous Woman Tour', 'kakikiki', 'Dangerous_Woman_Tour.png'),
+(10, 'The EXO\'rDIUM', 'kakuuuuu', 'Z_converted_converted-1466207755.jpg'),
+(15, 'Revival Tour Concert Tour', 'kak', 'Selena_Gomez_-_Revival_Tour_poster.png'),
+(16, 'Reputation Album Tour', 'yuhuyy', 'Taylor_Swifts_Reputation_Stadium_tour.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eventprice`
+--
+
+CREATE TABLE `eventprice` (
+  `idPrice` int(11) NOT NULL,
+  `schedule_id` int(11) DEFAULT NULL,
+  `seat_id` int(11) NOT NULL,
+  `remainTicket` int(11) NOT NULL,
+  `availableTicket` int(11) NOT NULL,
+  `price` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `eventprice`
+--
+
+INSERT INTO `eventprice` (`idPrice`, `schedule_id`, `seat_id`, `remainTicket`, `availableTicket`, `price`) VALUES
+(1, 1, 1, 30, 30, 4300000),
+(2, 1, 2, 300, 300, 5000000),
+(3, 1, 5, 400, 400, 5500000),
+(4, 1, 7, 200, 200, 1318000),
+(5, 2, 6, 200, 200, 4050000),
+(7, 2, 9, 350, 350, 4150000),
+(8, 2, 10, 200, 200, 7356000),
+(9, 5, 6, 100, 100, 100),
+(10, 6, 6, 110, 120, 8392);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eventschedule`
+--
+
+CREATE TABLE `eventschedule` (
+  `idSchedule` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `cat_id` int(11) NOT NULL,
+  `artist_id` int(11) NOT NULL,
+  `venue_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `startTime` time NOT NULL,
+  `endTime` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `eventschedule`
+--
+
+INSERT INTO `eventschedule` (`idSchedule`, `event_id`, `cat_id`, `artist_id`, `venue_id`, `date`, `startTime`, `endTime`) VALUES
+(1, 9, 1, 1, 1, '2018-07-17', '13:16:53', '23:00:00'),
+(2, 10, 1, 6, 2, '2018-07-25', '16:00:50', '23:59:00'),
+(4, 9, 1, 1, 3, '2018-06-30', '18:00:00', '23:00:00'),
+(5, 1, 1, 4, 2, '2018-07-11', '17:00:00', '22:30:00'),
+(6, 16, 1, 7, 2, '2018-07-23', '18:20:00', '03:00:00'),
+(7, 16, 1, 7, 4, '2018-08-30', '13:50:00', '17:59:00'),
+(8, 15, 1, 5, 4, '2018-09-27', '12:00:00', '15:00:00'),
+(9, 8, 1, 2, 3, '2018-08-14', '10:00:00', '14:00:00'),
+(10, 9, 1, 1, 5, '2018-07-31', '12:00:00', '17:00:00'),
+(11, 9, 1, 1, 7, '2018-08-07', '12:00:00', '16:00:00'),
+(12, 9, 1, 1, 8, '2018-08-23', '13:00:00', '22:00:00'),
+(13, 9, 1, 1, 10, '2018-10-19', '07:00:00', '10:00:00'),
+(14, 9, 1, 1, 11, '2018-12-30', '23:00:00', '03:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eventseat`
+--
+
+CREATE TABLE `eventseat` (
+  `idSeat` int(11) NOT NULL,
+  `seatZone` varchar(255) NOT NULL,
+  `Capacity` int(20) NOT NULL,
+  `venue_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `eventseat`
+--
+
+INSERT INTO `eventseat` (`idSeat`, `seatZone`, `Capacity`, `venue_id`) VALUES
+(1, 'Tribune 1', 35, 1),
+(2, 'Tribune 2', 200, 1),
+(5, 'Tribune 3', 3000, 1),
+(6, 'Festival A', 200, 2),
+(7, 'West VIP', 100, 1),
+(8, 'Hot VIP', 50, 1),
+(9, 'Festival B', 400, 2),
+(10, 'VVIP', 200, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eventvenue`
+--
+
+CREATE TABLE `eventvenue` (
+  `idVenue` int(11) NOT NULL,
+  `venue` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `photo` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `eventvenue`
+--
+
+INSERT INTO `eventvenue` (`idVenue`, `venue`, `city`, `country`, `photo`) VALUES
+(1, 'Glora Bung Karno', 'Jakarta', 'Indonesia', 'gbk.png'),
+(2, 'Jiexpo-Kebayoran', 'Jakarta', 'Indonesia', 'jiexpo_kebayoran.jpg'),
+(3, 'Trans Luxury Hall', 'Bandung', 'Indonesia', 'la.gif'),
+(4, 'FedExField', 'Washington D.C', 'United States', '82477s.gif'),
+(5, 'Gillette Stadium', 'Foxborough', 'United States', 'revolution-seating2017.png'),
+(6, 'Rogers Center', 'Toronto', 'Canada', '83735s.gif'),
+(7, 'Mercedes-Benz Stadium', 'Atlanta', 'Georgia', NULL),
+(8, 'Optus Stadium', 'Perth', 'Australia', NULL),
+(9, 'Etihad Stadium', 'Melbourne', 'Australia', NULL),
+(10, 'Tokyo Dome', 'Tokyo', 'Japan', NULL),
+(11, 'Mt Smart Stadium', 'Auckland', 'New Zealand', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order`
+--
+
+CREATE TABLE `order` (
+  `idOrder` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `totalPrice` int(11) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `creditCard` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`idOrder`, `user_id`, `quantity`, `totalPrice`, `status`, `creditCard`) VALUES
+(1, 5, 4, 6590000, 'pending', ''),
+(2, 5, 3, 400, 'pending', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_detail`
+--
+
+CREATE TABLE `order_detail` (
+  `idDetail` int(11) NOT NULL,
+  `order_code` int(11) NOT NULL,
+  `codeTicket` varchar(255) NOT NULL,
+  `barcodePic` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`idDetail`, `order_code`, `codeTicket`, `barcodePic`) VALUES
+(1, 1, 'OD000001', 'OD000001png'),
+(2, 1, 'OD000002', 'OD000002png'),
+(3, 1, 'OD000003', 'OD000003png'),
+(4, 1, 'OD000004', 'OD000004png'),
+(5, 2, 'OD000005', 'OD000005png'),
+(6, 2, 'OD000006', 'OD000006png'),
+(7, 2, 'OD000007', 'OD000007png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `idUser` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `phoneNumber` varchar(13) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `level` varchar(25) NOT NULL,
+  `pictureUser` varchar(255) NOT NULL,
+  `statusNotif` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`idUser`, `name`, `address`, `phoneNumber`, `email`, `username`, `password`, `level`, `pictureUser`, `statusNotif`) VALUES
+(1, 'Melinda', 'Malang', '0813336328733', 'rmillenia00@gmail.com', 'meli', '315fef7b8d30f99d6964f489ee4c9828', 'superadmin', 'YUHU1.png', 1),
+(2, 'Malak', 'Kediri', '081233456789', 'malak.diana@gmail.com', 'malakdiana', '29a0694b3f03169af51b8cb18c447d8d', 'admin', 'default.png', 1),
+(3, 'Hanifah', 'Jombang', '081334458795', 'hanifahFanidya@gmail.com', 'hanifah', 'c0d467ce4c04bf343c15254c1dcb67b1', 'user', 'default.png', 1),
+(4, 'Dinar', 'Malang', '098129338299', 'dinarpratnya@gmail.com', 'dinar', '13d2c27d75f43e084f96904768e10fee', 'admin', 'default.png', 1),
+(5, 'Malak', 'Malang', '23456789', 'rmillenia96@gmail.com', 'malak', '72ea813a17bcff1b9f07b286c5ff7de4', 'user', 'client-icon-pink1.png', 1),
+(6, 'Melani', 'Malang', '23456789', 'nia.meli@rocketmail.com', 'melani', 'bf6c13136ba681f8daa4fbd472cd404c', 'user', 'default.png', 1);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `artist`
+--
+ALTER TABLE `artist`
+  ADD PRIMARY KEY (`idArtist`);
+
+--
+-- Indexes for table `eventcategory`
+--
+ALTER TABLE `eventcategory`
+  ADD PRIMARY KEY (`idCat`);
+
+--
+-- Indexes for table `eventname`
+--
+ALTER TABLE `eventname`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `eventprice`
+--
+ALTER TABLE `eventprice`
+  ADD PRIMARY KEY (`idPrice`),
+  ADD KEY `fk_eventSchedule` (`schedule_id`),
+  ADD KEY `fk_eventSeat` (`seat_id`);
+
+--
+-- Indexes for table `eventschedule`
+--
+ALTER TABLE `eventschedule`
+  ADD PRIMARY KEY (`idSchedule`),
+  ADD KEY `fk_eventCat` (`cat_id`),
+  ADD KEY `fk_eventName2` (`event_id`),
+  ADD KEY `fk_eventVenue2` (`venue_id`),
+  ADD KEY `fk_eventArtist` (`artist_id`);
+
+--
+-- Indexes for table `eventseat`
+--
+ALTER TABLE `eventseat`
+  ADD PRIMARY KEY (`idSeat`),
+  ADD KEY `fk_venue` (`venue_id`);
+
+--
+-- Indexes for table `eventvenue`
+--
+ALTER TABLE `eventvenue`
+  ADD PRIMARY KEY (`idVenue`);
+
+--
+-- Indexes for table `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`idOrder`);
+
+--
+-- Indexes for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  ADD PRIMARY KEY (`idDetail`),
+  ADD KEY `fk_orderCode` (`order_code`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`idUser`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `artist`
+--
+ALTER TABLE `artist`
+  MODIFY `idArtist` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `eventcategory`
+--
+ALTER TABLE `eventcategory`
+  MODIFY `idCat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `eventname`
+--
+ALTER TABLE `eventname`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `eventprice`
+--
+ALTER TABLE `eventprice`
+  MODIFY `idPrice` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `eventschedule`
+--
+ALTER TABLE `eventschedule`
+  MODIFY `idSchedule` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `eventseat`
+--
+ALTER TABLE `eventseat`
+  MODIFY `idSeat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `eventvenue`
+--
+ALTER TABLE `eventvenue`
+  MODIFY `idVenue` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `order`
+--
+ALTER TABLE `order`
+  MODIFY `idOrder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  MODIFY `idDetail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `eventprice`
+--
+ALTER TABLE `eventprice`
+  ADD CONSTRAINT `fk_eventSchedule` FOREIGN KEY (`schedule_id`) REFERENCES `eventschedule` (`idSchedule`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_eventSeat` FOREIGN KEY (`seat_id`) REFERENCES `eventseat` (`idSeat`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `eventschedule`
+--
+ALTER TABLE `eventschedule`
+  ADD CONSTRAINT `fk_eventArtist` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`idArtist`),
+  ADD CONSTRAINT `fk_eventCat` FOREIGN KEY (`cat_id`) REFERENCES `eventcategory` (`idCat`),
+  ADD CONSTRAINT `fk_eventName2` FOREIGN KEY (`event_id`) REFERENCES `eventname` (`id`),
+  ADD CONSTRAINT `fk_eventVenue2` FOREIGN KEY (`venue_id`) REFERENCES `eventvenue` (`idVenue`);
+
+--
+-- Constraints for table `eventseat`
+--
+ALTER TABLE `eventseat`
+  ADD CONSTRAINT `fk_venue` FOREIGN KEY (`venue_id`) REFERENCES `eventvenue` (`idVenue`);
+
+--
+-- Constraints for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  ADD CONSTRAINT `fk_orderCode` FOREIGN KEY (`order_code`) REFERENCES `order` (`idOrder`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
