@@ -62,8 +62,8 @@
 								</ul>
 							</div>
 							<div class="bottom-part">
-								<h3>Rp. <?php echo $key->price ; ?></h3>
-								<a class="price-btn text-uppercase" href="#">Buy Now</a>
+								<h3>Rp. <?php echo $key->price ; ?></h3><br>
+								<a href="<?php site_url()?>../Search/detailTicket/<?php echo $key->idSchedule;?>/<?php echo $key->idPrice ; ?>" class="btn btn-warning">Buy Now</a>
 							</div>
 						</div>
 
@@ -112,7 +112,7 @@
 											</p>
 											</font>
 											<?php echo $key->venue; ?>,&nbsp;<?php echo $key->city; ?>,&nbsp;<?php echo $key->country; ?>
-											<br><br>
+											<br>
 											
 											
 											<ul>
@@ -122,8 +122,8 @@
 												<a href="#"><i class="fa fa-behance fa-2x"></i></a>
 											</ul>
 											<br>
-											<a href="javascript:void(0);" data-id="<?php echo $key->idSchedule ; ?>" data-toggle="modal" data-target="#edit-data">
-                            				<button type="submit" data-toggle="modal" data-target="#ubah-data" class="btn btn-secondary">See Details <?php echo $key->idSchedule ; ?></button></a>
+											<a href="<?php echo site_url()?>/Search/detailEvent/<?php echo $key->idSchedule;?>">
+                            				<button class="btn btn-secondary">See Details</button></a>
 										</div>
 									</div>
 								</div>								
@@ -144,97 +144,7 @@
 					</section>
 
 
-<section id="topEvent" class="pb-100">
-<div class="container">
-	<div class="row">
-		<div class="col-md-6">
-			<center><h1>Top Events In Indonesia</h1></center>
-			<br>
-			<table class="table">
-  				<thead class="thead-dark">
-  					
-				    <tr>
-				      <th scope="col">No.</th>
-				      <th scope="col">Nama</th>
-				      <th scope="col">Jenis Kelamin</th>
-				    </tr>
-				  </thead>
-				  <tbody style="color: black">
-				    <tr>
-				      <th scope="row">1</th>
-				      <td>Muhammad</td>
-				      <td>Laki-laki</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">2</th>
-				      <td>Aisyah</td>
-				      <td>Perempuan</td>
-				    </tr>
-				 	<tr>
-				      <th scope="row">3</th>
-				      <td>Fatimah</td>
-				      <td>Perempuan</td>
-				    </tr>
-				  </tbody>
-				</table>
-		</div>
-		<div class="col-md-6">
-			<center><h1>Top International Events</h1></center>
-			<br>
-			<table class="table">
-  				<thead class="thead-dark">
-				    <tr>
-				      <th scope="col">No.</th>
-				      <th scope="col">Nama</th>
-				      <th scope="col">Jenis Kelamin</th>
-				    </tr>
-				  </thead>
-				  <tbody style="color: black">
-				    <tr>
-				      <th scope="row">1</th>
-				      <td>Muhammad</td>
-				      <td>Laki-laki</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">2</th>
-				      <td>Aisyah</td>
-				      <td>Perempuan</td>
-				    </tr>
-				 	<tr>
-				      <th scope="row">3</th>
-				      <td>Fatimah</td>
-				      <td>Perempuan</td>
-				    </tr>
-				  </tbody>
-				</table>
-		</div>
-		
-	</div>
-</div>
-</section>
-
 			<!-- End speakers Area -->
-
-<!-- Modal Ubah -->
-	<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="edit-data" class="modal fade">
-	    <div class="modal-dialog">
-	        <div class="modal-content">
-	            <div class="modal-header">
-	                <h4 class="modal-title">Update Data</h4>
-	            </div>
-	             <?php echo form_open_multipart(); ?>
-		            <div class="modal-body">
-		            	<input type="text" id="id" name="id">
-		            	<?php foreach ($schedule as $key) {?>
-		            		<h1><?php echo $key->name ?></h1>
-		            	<?php } ?>
-		                </div>
-	                <?php echo form_close();?>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-	<!-- END Modal Ubah -->
 
 <script>
 

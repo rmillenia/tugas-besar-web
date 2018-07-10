@@ -1,3 +1,5 @@
+
+
 <body class="fix-header fix-sidebar">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
@@ -22,47 +24,33 @@
                     <ul class=" navbar-nav my-lg-0" style="padding-top: 10px; padding-bottom: 10px">
                         <!-- Messages -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell" style="font-size:30px"></i><div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                            <a class="nav-link dropdown-toggle text-muted  " href="#" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell" style="font-size:30px"></i><div class="notify"> 
+                            <?php foreach($notif as $a){
+                                if ($a->statusNotif == 0) { ?>
+                                     <span class="heartbit"></span>
+                                      <span class="point"></span>
+                                <?php } }?>
+                            </div>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn" aria-labelledby="2">
+                            
+                            <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn" aria-labelledby="2"  id="notification">
                                 <ul>
                                     <li>
-                                        <div class="drop-title">You have 4 new messages</div>
+                                        <div class="drop-title">You have <?php echo $countNotif[0]->id ?>  new updates</div>
                                     </li>
                                     <li>
                                         <div class="message-center">
-                                            <!-- Message -->
-                                            <a href="#">
-                                                <div class="user-img"> <img src="<?php echo base_url();?>assets/awal/images/users/5.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                            <?php if(is_array($notif)){ 
+                                                foreach ($notif as $key) {?>
+
+                                                <a href="<?php echo site_url()?>/Welcome/update/<?php echo $key->idUser?>">
+                                                <div class="user-img"> <img src="<?php echo base_url();?>assets/imgEvent/<?php echo $key->pictureUser ;?> " alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                                                 <div class="mail-contnet">
-                                                    <h5>Michael Qin</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span>
+                                                    <h5><?php echo $key->name?></h5> <span class="mail-desc">Just Register A New Account</span>
                                                 </div>
                                             </a>
-                                            <!-- Message -->
-                                            <a href="#">
-                                                <div class="user-img"> <img src="<?php echo base_url();?>assets/awal/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
-                                                <div class="mail-contnet">
-                                                    <h5>John Doe</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span>
-                                                </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="#">
-                                                <div class="user-img"> <img src="<?php echo base_url();?>assets/awal/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
-                                                <div class="mail-contnet">
-                                                    <h5>Mr. John</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span>
-                                                </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="#">
-                                                <div class="user-img"> <img src="<?php echo base_url();?>assets/awal/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
-                                                <div class="mail-contnet">
-                                                    <h5>Michael Qin</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span>
-                                                </div>
-                                            </a>
+                                            <?php }} ?>
                                         </div>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>See all e-Mails</strong> <i class="fa fa-angle-right"></i> </a>
                                     </li>
                                 </ul>
                             </div>

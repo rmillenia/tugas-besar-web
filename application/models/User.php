@@ -37,7 +37,8 @@ class User extends CI_Model {
                 'username' => $this->input->post('username'),
                 'password' => $pass,
                 'level'    => $level,
-                'pictureUser'  => $pic
+                'pictureUser'  => $pic,
+                'statusNotif'  => 0,
 
             );
 

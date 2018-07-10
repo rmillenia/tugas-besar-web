@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -21,12 +22,7 @@
     <link href="<?php echo base_url();?>assets/awal/css/lib/owl.theme.default.min.css" rel="stylesheet" />
     <link href="<?php echo base_url();?>assets/awal/css/helper.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/awal/css/style.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
-    <!--[if lt IE 9]>
-    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+
 </head>
 <body class="fix-header fix-sidebar">
     
@@ -60,7 +56,12 @@
                                     <span><i class="fa fa-usd f-s-40 color-primary"></i></span>
                                 </div>
                                 <div class="media-body media-text-right">
-                                    <h2>568120</h2>
+                                    <h2><?php
+                                        $rev = 0; 
+                                        foreach ($revenue as $key) {
+                                            $rev += $key->totalPrice;
+                                    }?>
+                                        <?php echo number_format($rev, 0, ',', '.') ?></h2>
                                     <p class="m-b-0">Total Revenue</p>
                                 </div>
                             </div>
@@ -73,7 +74,13 @@
                                     <span><i class="fa fa-shopping-cart f-s-40 color-success"></i></span>
                                 </div>
                                 <div class="media-body media-text-right">
-                                    <h2>1178</h2>
+                                    <h2><?php
+                                        $sale = 0; 
+                                        foreach ($sales as $key) {
+                                            $sale += $key->quantity;
+                                    }?>
+                                        <?php echo number_format($sale, 0, ',', '.') ?>
+                                    </h2>
                                     <p class="m-b-0">Sales</p>
                                 </div>
                             </div>
@@ -85,8 +92,16 @@
                                 <div class="media-left meida media-middle">
                                     <span><i class="fa fa-ticket f-s-40 color-warning"></i></span>
                                 </div>
-                                <div class="media-body media-text-right">
-                                    <h2>25</h2>
+                               <div class="media-body media-text-right">
+
+                                    <h2>
+                                        <?php
+                                        $total = 0; 
+                                        foreach ($countTicket as $key) {
+                                            $total += $key->remainTicket;
+                                    }?>
+                                        <?php echo number_format($total, 0, ',', '.') ?>
+                                    </h2>
                                     <p class="m-b-0">Total Tickets</p>
                                 </div>
                             </div>
@@ -99,7 +114,7 @@
                                     <span><i class="fa fa-user f-s-40 color-danger"></i></span>
                                 </div>
                                 <div class="media-body media-text-right">
-                                    <h2>847</h2>
+                                    <h2><?php echo $countUser[0]->id;?></h2>
                                     <p class="m-b-0">Customer</p>
                                 </div>
                             </div>
@@ -120,40 +135,35 @@
                     <!-- column -->
 
                     <!-- column -->
-                    <div class="col-lg-4">
+                     <div class="col-lg-4">
                         <div class="card">
                             <h4>Available Ticket in This Month</h4>
                             <hr>
                             <div class="card-body browser">
-                                <p class="f-w-600">iMacs <span class="pull-right">85%</span></p>
-                                <div class="progress ">
-                                    <div role="progressbar" style="width: 85%; height:8px;" class="progress-bar bg-danger wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
-                                </div>
+                            <?php 
+                            $no = 1;
+                            foreach ($allTicket as $key): ?>
 
-                                <p class="m-t-30 f-w-600">iBooks<span class="pull-right">90%</span></p>
+                            <?php if ($no%2 == 0) { ?>
+                                <p class="m-t-30 f-w-600"><?php echo $key->name?><span class="pull-right"><?php echo number_format($key->persen, 0);?>%</span></p>
                                 <div class="progress">
-                                    <div role="progressbar" style="width: 90%; height:8px;" class="progress-bar bg-info wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
+                                    <div role="progressbar" style="width: <?php echo $key->persen ?>%; height:8px;" class="progress-bar bg-danger wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
                                 </div>
+                            <?php }else{?>
 
-                                <p class="m-t-30 f-w-600">iPhone<span class="pull-right">65%</span></p>
+                             <p class="m-t-30 f-w-600"><?php echo $key->name?><span class="pull-right"><?php echo number_format($key->persen, 0);?>%</span></p>
                                 <div class="progress">
-                                    <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-success wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
+                                    <div role="progressbar" style="width: <?php echo $key->persen ?>%; height:8px;" class="progress-bar bg-warning wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
                                 </div>
-
-                                <p class="m-t-30 f-w-600">Samsung<span class="pull-right">65%</span></p>
-                                <div class="progress">
-                                    <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-warning wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
-                                </div>
-
-                                <p class="m-t-30 f-w-600">android<span class="pull-right">65%</span></p>
-                                <div class="progress m-b-30">
-                                    <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-success wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
+                            <?php } ?>
+                            <?php 
+                            $no++;
+                            endforeach?>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- column -->
-                </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
@@ -167,79 +177,27 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Name</th>
-                                                <th>Product</th>
-                                                <th>quantity</th>
+                                                <th>Quantity</th>
+                                                <th>Total Price</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php foreach ($recent as $key) {?>
+                                            <tr>
+                                                <td>
+                                                    <div class="round-img">
+                                                        <a href=""><img src="<?php echo base_url();?>assets/imgEvent/<?php echo $key->pictureUser?>" alt=""></a>
+                                                    </div>
+                                                </td>
+                                                <td><?php echo $key->name?></td>
+                                                <td><span><?php echo $key->quantity?> Tickets</span></td>
+                                                <td><span><?php echo $key->totalPrice?></span></td>
+                                                <td><span <?php if($key->status == 'pending'){?> class="badge badge-warning"<?php }else{?> class="badge badge-success" <?php } ?> ><?php echo $key->status?></span></td>
+                                            </tr>
+                                                
+                                            <?php } ?>
 
-                                            <tr>
-                                                <td>
-                                                    <div class="round-img">
-                                                        <a href=""><img src="<?php echo base_url();?>assets/awal/images/avatar/4.jpg" alt=""></a>
-                                                    </div>
-                                                </td>
-                                                <td>John Abraham</td>
-                                                <td><span>iBook</span></td>
-                                                <td><span>456 pcs</span></td>
-                                                <td><span class="badge badge-success">Done</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="round-img">
-                                                        <a href=""><img src="<?php echo base_url();?>assets/awal/images/avatar/2.jpg" alt=""></a>
-                                                    </div>
-                                                </td>
-                                                <td>John Abraham</td>
-                                                <td><span>iPhone</span></td>
-                                                <td><span>456 pcs</span></td>
-                                                <td><span class="badge badge-success">Done</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="round-img">
-                                                        <a href=""><img src="<?php echo base_url();?>assets/awal/images/avatar/3.jpg" alt=""></a>
-                                                    </div>
-                                                </td>
-                                                <td>John Abraham</td>
-                                                <td><span>iMac</span></td>
-                                                <td><span>456 pcs</span></td>
-                                                <td><span class="badge badge-warning">Pending</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="round-img">
-                                                        <a href=""><img src="<?php echo base_url();?>assets/awal/images/avatar/4.jpg" alt=""></a>
-                                                    </div>
-                                                </td>
-                                                <td>John Abraham</td>
-                                                <td><span>iBook</span></td>
-                                                <td><span>456 pcs</span></td>
-                                                <td><span class="badge badge-success">Done</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="round-img">
-                                                        <a href=""><img src="<?php echo base_url();?>assets/awal/images/avatar/4.jpg" alt=""></a>
-                                                    </div>
-                                                </td>
-                                                <td>John Abraham</td>
-                                                <td><span>iBook</span></td>
-                                                <td><span>456 pcs</span></td>
-                                                <td><span class="badge badge-success">Done</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="round-img">
-                                                        <a href=""><img src="<?php echo base_url();?>assets/awal/images/avatar/4.jpg" alt=""></a>
-                                                    </div>
-                                                </td>
-                                                <td>John Abraham</td>
-                                                <td><span>iBook</span></td>
-                                                <td><span>456 pcs</span></td>
-                                                <td><span class="badge badge-success">Done</span></td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -260,36 +218,4 @@
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->
-    <script src="<?php echo base_url();?>assets/awal/js/lib/jquery/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="<?php echo base_url();?>assets/awal/js/lib/bootstrap/js/popper.min.js"></script>
-    <script src="<?php echo base_url();?>assets/awal/js/lib/bootstrap/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="<?php echo base_url();?>assets/awal/js/jquery.slimscroll.js"></script>
-    <!--Menu sidebar -->
-    <script src="<?php echo base_url();?>assets/awal/js/sidebarmenu.js"></script>
-    <!--stickey kit -->
-    <script src="<?php echo base_url();?>assets/awal/js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <!--Custom JavaScript -->
-
-
-    <script src="<?php echo base_url();?>assets/awal/js/lib/calendar-2/moment.latest.min.js"></script>
-    <!-- scripit init-->
-    <script src="<?php echo base_url();?>assets/awal/js/lib/calendar-2/semantic.ui.min.js"></script>
-    <!-- scripit init-->
-    <script src="<?php echo base_url();?>assets/awal/js/lib/calendar-2/prism.min.js"></script>
-    <!-- scripit init-->
-    <script src="<?php echo base_url();?>assets/awal/js/lib/calendar-2/pignose.calendar.min.js"></script>
-    <!-- scripit init-->
-    <script src="<?php echo base_url();?>assets/awal/js/lib/calendar-2/pignose.init.js"></script>
-
-    <script src="<?php echo base_url();?>assets/awal/js/lib/owl-carousel/owl.carousel.min.js"></script>
-    <script src="<?php echo base_url();?>assets/awal/js/lib/owl-carousel/owl.carousel-init.js"></script>
-    <script src="<?php echo base_url();?>assets/awal/js/scripts.js"></script>
-    <!-- scripit init-->
-
-    <script src="<?php echo base_url();?>assets/awal/js/custom.min.js"></script>
-
-</body>
-
-</html>
+   

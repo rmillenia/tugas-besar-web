@@ -75,13 +75,49 @@ class  Search extends CI_Controller {
         $data['level']=$session_data['level'];
         $this->load->model('SearchModel');
         $this->load->model('EventScheduleModel');
+
+        $tickets = $this->input->post('subject');
+        if(!empty($tickets)){
+                $data['ticket'] = $this->SearchModel->getTicket($id,$tickets);
+                $data['numberTicket'] = $tickets;
+                $session_array = array('qty'=>$tickets);
+               $this->session->set_userdata('count', $session_array);
+        
+        }
         $data["artist_list"] = $this->EventScheduleModel->getArtistOption();
         $data["cat_list"] = $this->EventScheduleModel->getCatOption();
         $data['search']    =   $this->SearchModel->detailAll($id);
-        $data['ticket'] = $this->SearchModel->getTicket($id);
         $this->load->view('user/headerAllEvent',$data);
         $this->load->view('user/detailTicket',$data);
-        $this->load->view('user/footer');
+    }
+
+    public function detailTicket($id,$idPrice)
+    {
+         $tickets = $this->input->post('subject');
+        if(!empty($tickets)){
+                $data['numberTicket'] = $tickets;
+                $session_array = array('qty'=>$tickets);
+               $this->session->set_userdata('count', $session_array);
+        
+        }
+
+        $session_data=$this->session->userdata('count');
+        $data['numberTicket'] = $session_data['qty'] ;  
+
+        $session_data=$this->session->userdata('logged_in');
+        $data['username']=$session_data['username'];
+        $data['level']=$session_data['level'];
+        $this->load->model('SearchModel');
+        $this->load->model('EventScheduleModel');
+        $data["artist_list"] = $this->EventScheduleModel->getArtistOption();
+        $data["cat_list"] = $this->EventScheduleModel->getCatOption();
+        $data['detail']    =   $this->SearchModel->detailTickets($idPrice);
+        $data['search']    =   $this->SearchModel->detailAll($id);
+
+        $this->load->view('user/headerAllEvent',$data);
+        $this->load->view('user/detailTicket',$data);
+
+
     }
 
     

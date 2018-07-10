@@ -14,9 +14,14 @@ class AdminDetail extends CI_Controller {
         $id = $data['id'];
         $data['name'] = $this->user->selectAll($id,$user);
 
+        $this->load->model('Notif');
+        $data['notif'] = $this->Notif->notifikasi();
+        $data['countNotif'] = $this->Notif->count();
+
         $this->load->view('admin/header', $data);
         $this->load->view('admin/sidebar'); 
         $this->load->view('admin/profileAdmin', $data);
+        $this->load->view('admin/footer'); 
 	}
 
 	public function updatePhoto(){
@@ -77,11 +82,16 @@ class AdminDetail extends CI_Controller {
         $id = $data['id'];
         $data['name'] = $this->user->selectAll($id);
 
+        $this->load->model('Notif');
+        $data['notif'] = $this->Notif->notifikasi();
+        $data['countNotif'] = $this->Notif->count();
+
         $this->load->model('InputAdminModel');
         $data["admin_list"] = $this->InputAdminModel->getAdmin();
         $this->load->view('admin/header', $data);
         $this->load->view('admin/sidebar'); 
         $this->load->view('admin/profileAdmin', $data);
+        $this->load->view('admin/footer'); 
             
 	   } else {
         $pass = $this->input->post('password');

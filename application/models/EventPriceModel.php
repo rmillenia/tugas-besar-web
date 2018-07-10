@@ -11,7 +11,7 @@
 
 
     	public function getSeat($id){
-			$query = $this->db->query("SELECT * from eventseat inner join eventschedule as d on eventseat.venue_id= d.venue_id LEFT join eventprice on eventseat.idSeat = eventprice.seat_id where eventprice.seat_id is null and d.idSchedule=$id");
+			$query = $this->db->query("SELECT * from eventseat inner join eventschedule as d on eventseat.venue_id= d.venue_id left join eventprice as p on p.schedule_id = d.idSchedule and p.seat_id = eventseat.idSeat where d.idSchedule=$id and idPrice is null group by idSeat ");
             	return $query->result();
     	}
 

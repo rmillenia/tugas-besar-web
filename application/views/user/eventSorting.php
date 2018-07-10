@@ -26,7 +26,12 @@
             <?php foreach ($search as $key) { ?>
               <tr onclick="window.location='<?php echo site_url()?>/Search/detailEvent/<?php echo $key->idSchedule;?>'">
                 <th scope="row" style="background-color: #f4bd00" width="200px">
-                  <h3><?php echo $key->date;?></h3>
+                  <!--<?php// $dates =  $key->date;
+                  $ubah //= date_format(new dateTime($dates),'d M Y');
+
+                  ?> -->
+
+                  <h3><?php echo  $key->date; //$ubah?></h3>
                   <br>
                   <h4>&nbsp;<i class="fa fa-clock-o"></i>&nbsp;<?php echo $key->startTime;?></h4>
                 </th>

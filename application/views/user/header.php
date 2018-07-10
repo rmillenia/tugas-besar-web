@@ -46,7 +46,7 @@
 			    <div class="container">
 			    	<div class="row align-items-center justify-content-between d-flex">
 				      <div id="logo">
-				        <a href="index.html"><img src="<?php echo base_url();?>assets/img/logo1.png" alt="" title="" width="200"/></a>
+				        <a href="<?php echo site_url();?>/HomeUser/lihat"><img src="<?php echo base_url();?>assets/img/logo1.png" alt="" title="" width="200"/></a>
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
@@ -82,7 +82,7 @@
                         </ul>
                   </li>
 
-				          <li><a class="ticker-btn" href="#"><span class="fa fa-lg fa-shopping-cart"></span></a></li>
+				          <li><a class="ticker-btn" href="<?php echo site_url();?>/Order/orderUserTable"><span class="fa fa-lg fa-shopping-cart"></span></a></li>
 				        </ul>
 				      </nav><!-- #nav-menu-container -->		    		
 			    	</div>

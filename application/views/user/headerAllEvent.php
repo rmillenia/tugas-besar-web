@@ -79,8 +79,8 @@ ul.tab {
   margin: 3px;
   padding: 5px;
   overflow: hidden;
-  border: 5px solid #ccc;
-  background-color: #f1f1f1;
+  border: 3px solid #f4bd00;
+  background-color: #fff;
 }
 
 /* Float the list items side by side */
@@ -232,6 +232,11 @@ table {
     color: #000;
 }
 
+.modal-dialog1 {
+    max-width: 700px;
+    margin: 20rem auto;
+}
+
 
 </style>
 
@@ -241,7 +246,7 @@ table {
 			    <div class="container">
 			    	<div class="row align-items-center justify-content-between d-flex">
 				      <div id="logo">
-				        <a href="index.html"><img src="<?php echo base_url();?>assets/img/logo1.png" alt="" title="" width="200"/></a>
+				        <a href="<?php echo site_url();?>/HomeUser/lihat"><img src="<?php echo base_url();?>assets/img/logo1.png" alt="" title="" width="200"/></a>
 				      </div>
 				      <nav id="nav-menu-container">
 				        <ul class="nav-menu">
@@ -277,7 +282,7 @@ table {
                         </ul>
                   </li>
 
-				          <li><a class="ticker-btn" href="#"><span class="fa fa-lg fa-shopping-cart"></span></a></li>
+				          <li><a class="ticker-btn" href="<?php echo site_url();?>/Order/orderUserTable"><span class="fa fa-lg fa-shopping-cart"></span></a></li>
 
 
 				        </ul>

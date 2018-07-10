@@ -15,6 +15,10 @@ class EventSeat extends CI_Controller {
 		$user = $data['username'];
 		$data['name'] = $this->user->selectAll($id,$user);
 
+		$this->load->model('Notif');
+		$data['notif'] = $this->Notif->notifikasi();
+		$data['countNotif'] = $this->Notif->count();
+
 		$this->load->helper('url');
 		$data['idVenue'] = $idVenue;
 		$this->load->model('EventVenueModel');
@@ -24,6 +28,7 @@ class EventSeat extends CI_Controller {
 		$this->load->view('admin/header', $data);
         $this->load->view('admin/sidebar');
 		$this->load->view('admin/seatEvent', $data);
+		$this->load->view('admin/footer'); 
 	}
 
 	public function create($idVenue)

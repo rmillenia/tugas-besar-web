@@ -14,11 +14,17 @@ class EventName extends CI_Controller {
 		$id = $data['id'];
 		$user = $data['username'];
 		$data['name'] = $this->user->selectAll($id,$user);
+		
+		$this->load->model('Notif');
+		$data['notif'] = $this->Notif->notifikasi();
+		$data['countNotif'] = $this->Notif->count();
+
 		$this->load->model('EventNameModel');
 		$data["eventname_list"] = $this->EventNameModel->getName();
 		$this->load->view('admin/header',$data);
 		$this->load->view('admin/sidebar'); 
 		$this->load->view('admin/nameEvent', $data);
+		$this->load->view('admin/footer'); 
 	}
 
 	public function create()

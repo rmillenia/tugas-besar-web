@@ -6,6 +6,7 @@ class HomeUser extends CI_Controller {
 
 	public function lihat(){
 		$this->load->model('mcountdown');
+                $this->session->unset_userdata('count');
  		$data['timer'] = $this->mcountdown->select_time();
  		$data['name'] = $this->mcountdown->select_name();
  		$data['count'] = $this->mcountdown->count_time();

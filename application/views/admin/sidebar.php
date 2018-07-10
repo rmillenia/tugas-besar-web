@@ -26,8 +26,8 @@
                         </li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-wpforms"></i><span class="hide-menu">Ticket Approval<span class="label label-rouded label-primary pull-right">2</span></span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="form-basic.html">Ticket Request</a></li>
-                                <li><a href="form-layout.html">Approval Tickets</a></li>
+                                <li><a href="<?php echo site_url();?>/Order">Ticket Request</a></li>
+                                <li><a href="<?php echo site_url();?>/ApprovalTicket">Approval Tickets</a></li>
                             </ul>
                         </li>
                         <li class="nav-label">EXTRA</li>

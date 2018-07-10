@@ -21,9 +21,14 @@ class Home extends CI_Controller {
         $user = $data['username'];
         $data['name'] = $this->user->selectAll($id,$user);
 
+        $this->load->model('Notif');
+        $data['notif'] = $this->Notif->notifikasi();
+        $data['countNotif'] = $this->Notif->count();
+
         $this->load->view('admin/header',$data);
         $this->load->view('admin/sidebar');
         $this->load->view('admin/catEvent');
+        
     }
 
     public function getAllCatGrid()

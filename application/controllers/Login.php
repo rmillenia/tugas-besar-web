@@ -13,13 +13,13 @@
         {
             $this->load->library('session');
             $this->session->unset_userdata('logged_in');
+             $this->session->unset_userdata('count');
             $this->session->sess_destroy();
             redirect('Login','refresh');
         }
 
         public function cekDb($password)
         {
-            # code...
             $this->load->model('User');
             $username = $this->input->post('username'); 
             $result = $this->User->login($username,$password);
@@ -52,7 +52,7 @@
                 $data['username'] = $session_data['username'];
                 $data['level'] = $session_data['level'];
                 if ($data['level']=='user') {
-                    redirect('HomeUser','refresh');
+                    redirect('HomeUser/lihat','refresh');
                 }else{
                 redirect('Welcome','refresh');
                 }

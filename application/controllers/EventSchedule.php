@@ -15,11 +15,16 @@ class EventSchedule extends CI_Controller {
 		$user = $data['username'];
 		$data['name'] = $this->user->selectAll($id,$user);
 
+		$this->load->model('Notif');
+		$data['notif'] = $this->Notif->notifikasi();
+		$data['countNotif'] = $this->Notif->count();
+
 		$this->load->model('EventScheduleModel');
 		$data["sche_list"] = $this->EventScheduleModel->getAllSche();
 		$this->load->view('admin/header', $data);
         $this->load->view('admin/sidebar');
 		$this->load->view('admin/scheduleEvent', $data);
+		$this->load->view('admin/footer'); 
 	}
 
 	public function allData(){
@@ -34,6 +39,10 @@ class EventSchedule extends CI_Controller {
 		$user = $data['username'];
 		$data['name'] = $this->user->selectAll($id,$user);
 
+		$this->load->model('Notif');
+		$data['notif'] = $this->Notif->notifikasi();
+		$data['countNotif'] = $this->Notif->count();
+
 		$this->load->model('EventScheduleModel');
 		$data["sche_list"] = $this->EventScheduleModel->getAllSche();
 		$data["cat_list"] = $this->EventScheduleModel->getCatOption();
@@ -44,6 +53,7 @@ class EventSchedule extends CI_Controller {
 		$this->load->view('admin/header',$data);
         $this->load->view('admin/sidebar');
 		$this->load->view('admin/addSchedule', $data);
+		$this->load->view('admin/footer'); 
 	}
 
 	public function getDataID($id){
@@ -57,6 +67,10 @@ class EventSchedule extends CI_Controller {
 		$user = $data['username'];
 		$data['name'] = $this->user->selectAll($id,$user);
 
+		$this->load->model('Notif');
+		$data['notif'] = $this->Notif->notifikasi();
+		$data['countNotif'] = $this->Notif->count();
+
 		$this->load->model('EventScheduleModel');
 		$data["list"] = $this->EventScheduleModel->getSchedule($id);
 		$data["cat_list"] = $this->EventScheduleModel->getCatOption();
@@ -66,6 +80,7 @@ class EventSchedule extends CI_Controller {
 		$this->load->view('admin/header', $data);
         $this->load->view('admin/sidebar');
 		$this->load->view('admin/scheduleDetail', $data);
+		$this->load->view('admin/footer'); 
 
 	}
 

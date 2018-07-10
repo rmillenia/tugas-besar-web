@@ -1,9 +1,34 @@
- <section id="body" style="background-color: #efefef">
-        <div class="container-fluid" style="padding-left: 10px; padding-right: 10px; padding-top: 30px;background-color:  #e8be04;box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);">
+
+
+<div id="myModal" class="modal yuhu" role="dialog">
+  <div class="modal-dialog1">
+    <?php echo form_open_multipart(''); ?>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">The Number of Tickets You Want to Buy</h4>
+      </div>
+      <div class="modal-body">
+        <center>
+        <button name="subject" class="btn btn-lg btn-warning" type="submit" value="1" data>1 Ticket</button>
+        <button name="subject" class="btn btn-lg btn-warning" type="submit" value="2">2 Ticket</button>
+        <button name="subject" class="btn btn-lg btn-warning" type="submit" value="3">3 Ticket</button>
+        <button name="subject" class="btn btn-lg btn-warning" type="submit" value="4">4 Ticket</button>
+         <button name="subject" class="btn btn-lg btn-warning" type="submit" value="5">5 Ticket</button>
+       </center>
+      </div>
+    </div>
+     <?php echo form_close();?>
+  </div>
+</div>
+
+
+
+<section id="body" style="background-color: #fff; color: black">
+        <div class="container-fluid" style="padding-left: 10px; padding-right: 10px; padding-top: 30px;background-color:  #e8be04;">
           <br><br><br>
           <div class="row">
             <div class="col-12">
-              <div class="single-footer-widget" style=""> 
+              <div class="single-footer-widget" style="">
                     <?php if(is_array($search)){?>
           <?php foreach ($search as $key) { ?>
           <div class="row" data-toggle="modal" data-target="#show-data">
@@ -21,28 +46,30 @@
               </div>
             </div>
           </div>
-    
-          <br>
+
 <div class="row">
-<div class="col-md-4 card" style="padding-left: 13px">
+<div class="col-md-3 card" style="padding-left: 13px">
 <ul class="tab">
-  <li><a href="#" class="tablinks" onclick="openCity(event, 'London')">A-Z</a></li>
-  <li><a href="#" class="tablinks" onclick="openCity(event, 'Paris')">Lowest Price</a></li>
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'Ticket')">A-Z</a></li>
 </ul>
 
-<div id="London" class="tabcontent">
+<div id="Ticket" class="tabcontent">
+  <?php if (!empty($ticket)) {?>
+   <?php if (!empty($numberTicket)) {?>
             <table class="table text-left">
           <tbody style="color: black">
+            <h5>The Number of Ticket You Want : <?php echo $numberTicket[0];?></h5>
+            <br>
             <?php if(is_array($ticket)){?>
             <?php foreach ($ticket as $key) { ?>
-              <tr onclick="window.location='<?php echo site_url()?>/Search/detailEvent/<?php echo $key->idSchedule;?>'">
+              <tr onclick="window.location='<?php echo site_url()?>/Search/detailTicket/<?php echo $key->idSchedule;?>/<?php echo $key->idPrice;?>'">
                 <th scope="row">
                   <h4><?php echo $key->seatZone ; ?></h4>
                   <br>
-                  <h5>Entry Before <?php echo $key->startTime ; ?></h5>
+                  <h5>Remaining Tickets : <?php echo $key->remainTicket ; ?></h5>
                 </th>
-                  <td width="100px">
-                    <button class="btn btn-outline-info" style="width: 150px">Rp. <?php echo $key->price ; ?></button>
+                  <td width="50px">
+                    <button class="btn btn-outline-warning" style="width: 110px">Rp.<?php echo $key->price ; ?></button>
                   </td>
               </tr>
             <?php }}else{?>
@@ -51,25 +78,58 @@
                   <h3>Is Empty</h3>
                 </th>
               </tr>
+            <?php }}else{?>
             <?php } ?>
             </tbody>
           </table>
+          <?php }?>
+
+          <?php if (!empty($detail)) {?>
+            <h5>The Number of Ticket You Want : <?php echo $numberTicket[0];?></h5>
+            <br>
+            <?php if(is_array($detail)){?>
+            <div class="row">
+            <div class="col-7">
+            <h3>Rp.<?php echo $detail[0]->price ; ?></h3>
+            <p style="color: grey">Includes $19 seller and delivery fees</p>
+            </div>
+            <div class="col-5">
+            <a href="<?php echo site_url()?>/Payment/home/<?php echo $detail[0]->idPrice;?>"><button class="btn btn-outline-warning" style="width: 110px">Checkout</button></a>
+            </div>        
+            </div>
+            <hr>
+            <div class="row">
+            <div class="col-2" style=""><i class="fa fa-clock-o" style="font-size:35px;color:black;margin-top: -9px"></i>
+            <br>
+            <i class="fa fa-ticket" style="font-size:35px;color:black;margin-top: 20px"></i>
+            <br>
+            <i class="fa fa-bank" style="font-size:35px;color:black;margin-top: 20px"></i>
+            
+            </div>
+            <div class="col-10">
+            <b><p style="color: black">At <?php echo $detail[0]->startTime ; ?></p>
+            <hr />
+            <p style="color: black"><?php echo $detail[0]->remainTicket ; ?> Remaining Tickets</p>
+            <hr />
+            <p style="color: black">Meet-Up</p></b>
+            <br><br><br><br>
+            </div>
+            </div>
+
+            <?php }else{?>
+                  <h3>Is Empty</h3>
+            <?php }}else{?>
+            <?php } ?>
+
+</div>
 </div>
 
-<div id="Paris" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p>
-</div>
-
-</div>
 <div class="col-md-1"></div>
-<div class="col-md-7 card" style="padding-top: 50px; padding-bottom: 10px">
+<div class="col-md-8" style="padding-top: 70px; padding-bottom: 20px; ">
  <center><img src="<?php echo base_url()?>assets/imgEvent/<?php echo $search[0]->photo;?>" width = "800" height="370" style="border-radius: 5px;"></center>
 </div>
 
 </div>
-</div>
-<br>
 </section>
 
 <!-- Modal Tambah -->
@@ -127,21 +187,84 @@
               </div>
             </div>
           </div>
+        </div> 
+      <footer class="footer-area section-gap">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5 col-md-6 col-sm-6">
+              <div class="single-footer-widget">
+                <h6>About Us</h6>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.
+                </p>
+                <p class="footer-text">
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart3" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>                
+              </div>
+            </div>
+            <div class="col-lg-5  col-md-6 col-sm-6">
+              <div class="single-footer-widget">
+                <h6>Newsletter</h6>
+                <p>Stay update with our latest</p>
+                <div class="" id="mc_embed_signup">
+                  <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
+                    <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
+                                    <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                                    <div style="position: absolute; left: -5000px;">
+                        <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                      </div>
+
+                    <div class="info"></div>
+                  </form>
+                </div>
+              </div>
+            </div>            
+            <div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+              <div class="single-footer-widget">
+                <h6>Follow Us</h6>
+                <p>Let us be social</p>
+                <div class="footer-social d-flex align-items-center">
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-dribbble"></i></a>
+                  <a href="#"><i class="fa fa-behance"></i></a>
+                </div>
+              </div>
+            </div>              
+          </div>
         </div>
+      </footer> 
+
+      <!-- End footer Area -->  
+
+      <script src="<?php echo base_url();?>assets/assets/js/vendor/jquery-2.2.4.min.js"></script>
+      <script src="<?php echo base_url();?>assets/assets/js/vendor/bootstrap.min.js"></script>      
+        <script src="<?php echo base_url();?>assets/assets/js/easing.min.js"></script>      
+      <script src="<?php echo base_url();?>assets/assets/js/superfish.min.js"></script> 
+      <script src="<?php echo base_url();?>assets/assets/js/jquery.ajaxchimp.min.js"></script>
+      <script src="<?php echo base_url();?>assets/assets/js/jquery.magnific-popup.min.js"></script> 
+      <script src="<?php echo base_url();?>assets/assets/js/owl.carousel.min.js"></script>      
+      <script src="<?php echo base_url();?>assets/assets/js/main.js"></script>
+
+
+<script type="text/javascript">
+  <?php if (empty($numberTicket)) {?>
+    $('#myModal').modal('show');
+<?php } ?>
+  
+</script>
 
 <script>
         document.getElementsByClassName('tablinks')[0].click()
-        function openCity(evt, cityName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(cityName).style.display = "block";
+        function openCity(evt, className) {
+            document.getElementById(className).style.display = "block";
             evt.currentTarget.className += " active";
         }
       </script>
+
+
+ </body>
+  </html>
+

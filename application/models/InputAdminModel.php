@@ -5,7 +5,6 @@ class InputAdminModel extends CI_Model {
 	 public function __construct()
     {
         parent::__construct();
-        //Do your magic here
     }
 
     public function getAdmin()
@@ -35,7 +34,8 @@ class InputAdminModel extends CI_Model {
                 'username' => $this->input->post('name'),
                 'password' => $pass,
                 'level'    => $level,
-                'pictureUser'  => $pic
+                'pictureUser'  => $pic,
+                'statusNotif'  => 1
             );
 
             $this->db->insert('user', $object);

@@ -48,14 +48,21 @@ class SearchModel extends CI_Model {
     }
 
     public function detailAll($id){
-        $query = $this->db->query("SELECT * from eventschedule as s inner join eventname as n on s.event_id = n.id inner join artist as a on s.artist_id = a.idArtist inner join eventvenue as v on s.venue_id = v.idVenue inner join eventcategory as c on s.cat_id = c.idCat where s.idSchedule = $id");
+        $query = $this->db->query("SELECT * from eventschedule as s inner join eventname as n on s.event_id = n.id inner join artist as a on s.artist_id = a.idArtist inner join eventvenue as v on s.venue_id = v.idVenue inner join eventcategory as c on s.cat_id = c.idCat where s.idSchedule = '$id' ");
          if($query->num_rows()>0){
             return $query->result();
         }
     }
 
-    public function getTicket($id){
-      $query = $this->db->query("SELECT * from eventprice as p inner join eventseat as s on p.seat_id = s.idSeat inner join eventschedule as d on p.schedule_id = d.idSchedule and s.venue_id = d.venue_id where schedule_id = $id");
+    public function getTicket($id,$ticket){
+      $query = $this->db->query("SELECT * from eventprice as p inner join eventseat as s on p.seat_id = s.idSeat inner join eventschedule as d on p.schedule_id = d.idSchedule and s.venue_id = d.venue_id where schedule_id = $id and p.remainTicket >= $ticket ");
+        if($query->num_rows()>0){
+            return $query->result();
+        }
+    }
+
+    public function detailTickets($id){
+        $query = $this->db->query("SELECT * from eventprice as p inner join eventseat as s on p.seat_id = s.idSeat inner join eventschedule as d on p.schedule_id = d.idSchedule and s.venue_id = d.venue_id inner join artist as a on d.artist_id = a.idArtist inner join eventvenue as v on s.venue_id = v.idVenue inner join eventname as n on d.event_id = n.id where idPrice = $id");
         if($query->num_rows()>0){
             return $query->result();
         }

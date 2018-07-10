@@ -28,6 +28,9 @@
                             <td><?php echo $key->endTime; ?></td>
                             
                         </tr>
+
+                        <!--<img src="<?php //base_url()?>./assets/imgEvent/surbay.jpg">
+                        Jangan lupa diberi titik agar muncul -->
                         <?php } ?>
   </table>
 <!--</div> -->

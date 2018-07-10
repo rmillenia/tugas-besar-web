@@ -15,11 +15,16 @@ class EventArtist extends CI_Controller {
         $user = $data['username'];
         $data['name'] = $this->user->selectAll($id,$user);
 
+        $this->load->model('Notif');
+        $data['notif'] = $this->Notif->notifikasi();
+        $data['countNotif'] = $this->Notif->count();
+
         $this->load->model('EventArtistModel');
         $data["eventartist_list"] = $this->EventArtistModel->getArtist();
         $this->load->view('admin/header',$data);
         $this->load->view('admin/sidebar'); 
         $this->load->view('admin/artistEvent', $data);
+        $this->load->view('admin/footer'); 
     }
 
     public function create()

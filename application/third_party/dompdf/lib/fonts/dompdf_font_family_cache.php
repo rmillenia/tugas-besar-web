@@ -113,4 +113,10 @@
   'material design icons' => array(
     'normal' => $fontDir . '\cda6f82d45d0d9cfe073feed904ad894',
   ),
+  'kreon' => array(
+    'normal' => $fontDir . '\7d99dd60cb20e2257699ee2b500bd569',
+  ),
+  'lobster' => array(
+    'normal' => $fontDir . '\ab523c38893c0b29b5832e81889d3ce4',
+  ),
 ) ?>
