@@ -5,7 +5,7 @@
 	{
 		public function approve()
 		{
-			$query = $this->db->query("SELECT * FROM `order_detail` as d inner join `order` as o on d.order_code = o.idOrder where status = 'confirmed'");
+			$query = $this->db->query("SELECT * FROM `order_detail` as d inner join `order` as o on d.order_code = o.idOrder inner join user on o.user_id = user.idUser where status = 'confirmed'");
 			return $query->result();
 		}
 

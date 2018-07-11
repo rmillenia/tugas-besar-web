@@ -31,6 +31,29 @@ class Notif extends CI_Model {
 		return $query->result();
 
     }
+
+     function updatenotifUser($idOrder){
+        
+        $data = array(
+            'statusNotif'          => 1);
+        $this->db->where('idOrder', $idOrder);
+        $this->db->update('order',$data);
+
+    }
+
+     public function notifikasiUser($idUser)
+    {
+
+        $this->db->select('*');
+        $this->db->from('order');
+        $this->db->where('statusNotif', 0);
+        $this->db->where('status', 'confirmed');
+        $this->db->where('user_id', $idUser);
+        $result = $this->db->get();
+        return $result->result();
+
+    }
+
 	
 
 }

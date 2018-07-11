@@ -63,7 +63,7 @@
 							</div>
 							<div class="bottom-part">
 								<h3>Rp. <?php echo $key->price ; ?></h3><br>
-								<a href="<?php site_url()?>../Search/detailTicket/<?php echo $key->idSchedule;?>/<?php echo $key->idPrice ; ?>" class="btn btn-warning">Buy Now</a>
+								<a href="<?php echo site_url()?>../Search/detailTicket/<?php echo $key->idSchedule;?>/<?php echo $key->idPrice ; ?>" class="btn btn-warning">Buy Now</a>
 							</div>
 						</div>
 

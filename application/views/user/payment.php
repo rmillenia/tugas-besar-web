@@ -127,9 +127,6 @@
     <br>
     <b style="color: black"><p style="font-size: 17px">Seat Zone : <?php echo $detail[0]->seatZone ?></p></b>
 
-    <img src="<?php echo base_url('')?>/Payment/barcode/12345146">
-
-
 
 
 

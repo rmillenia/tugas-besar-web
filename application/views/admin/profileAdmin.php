@@ -51,7 +51,7 @@
       <div class="col-md-3">
         <div class="text-center">
         <?php echo form_open_multipart('AdminDetail/updatePhoto'); ?>
-          <img src="<?php echo base_url();?>assets/imgEvent/<?php echo $name[0]->pictureUser?>" class="avatar img-circle" alt="avatar" width="150" height="150">
+          <img src="<?php echo base_url();?>assets/imgEvent/<?php echo $name[0]->pictureUser?>" name="pic" class="avatar img-circle" alt="avatar" width="150" height="150">
           <h6>Upload a different photo...</h6>
           
           <input type="file" class="form-control" name="pic">

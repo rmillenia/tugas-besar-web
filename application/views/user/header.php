@@ -82,6 +82,27 @@
                         </ul>
                   </li>
 
+                   <?php if(!empty($username)){?>
+                  <li class="menu-has-children"><a href=""><span class="fa fa-bell"></span>
+                  	<?php if(!empty($notif)){?>
+                  	<sup>
+                  		<?php $i = 0; foreach($notif as $a){
+                                if ($a->statusNotif == 0) {
+                                    $i++;
+                                }elseif ($a->statusNotif == 1){
+                                    $i - 1;
+                                }
+                            }
+                            echo $i;?></sup></a>
+                        <ul>
+                       <?php if(is_array($notif)){ 
+                          	foreach($notif as $key){?>
+                          		<li><a href="HomeUser/update/<?php echo $key->idOrder?>"><h5>ID ORDER : <?php echo $key->idOrder?></h5> Your Order Has Been Confirmed</a></li>
+                          <?php }}?>
+                        </ul>
+                  </li>
+                  <?php }}?>
+
 				          <li><a class="ticker-btn" href="<?php echo site_url();?>/Order/orderUserTable"><span class="fa fa-lg fa-shopping-cart"></span></a></li>
 				        </ul>
 				      </nav><!-- #nav-menu-container -->		    		

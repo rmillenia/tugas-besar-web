@@ -40,6 +40,10 @@ class Order extends CI_Controller {
             $data['username']=$session_data['username'];
             $data['level']=$session_data['level'];
             $data['id']=$session_data['id'];
+
+            $this->load->model('EventScheduleModel');
+            $data["artist_list"] = $this->EventScheduleModel->getArtistOption();
+            $data["cat_list"] = $this->EventScheduleModel->getCatOption();
             
             $this->load->model('user');
 			$id = $data['id'];

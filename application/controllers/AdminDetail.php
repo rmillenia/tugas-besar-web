@@ -12,6 +12,7 @@ class AdminDetail extends CI_Controller {
 
         $this->load->model('user');
         $id = $data['id'];
+        $user = $data['username'];
         $data['name'] = $this->user->selectAll($id,$user);
 
         $this->load->model('Notif');
@@ -36,7 +37,7 @@ class AdminDetail extends CI_Controller {
         $id = $data['id'];
         
             $config['upload_path']='./assets/imgEvent/';
-            $config['allowed_types']='gif|jpg|png';
+            $config['allowed_types']='gif|jpg|png|jpeg';
             $config['max_size']=1000000000;
             $config['max_width']=10240;
             $config['max_height']=7680;
@@ -47,7 +48,7 @@ class AdminDetail extends CI_Controller {
                 
             }else{
                 
-                $this->EventArtistModel->updatePic($id);
+                $this->InputAdminModel->updatePic($id);
                 echo "<script>alert('Successfully Updated'); </script>";
                 redirect('AdminDetail','refresh');
         	}

@@ -52,6 +52,7 @@
 								<th>ID</th>
 								<th>ID Order</th>
 								<th>Ticket Code</th>
+                                <th>User Name</th>
 								<th>Barcode</th>
 							</tr>
 						</thead>
@@ -61,6 +62,7 @@
 							<td><?php echo $key->idDetail ; ?></td>
 							<td><?php echo $key->order_code ; ?></td>
 							<td><?php echo $key->codeTicket ; ?></td>
+                            <td><?php echo $key->name; ?></td>
                             <td><img src="<?php echo base_url()?>assets/imgEvent/barcode/<?php echo $key->barcodePic;?>"></td>
 							</tr>
 							<?php } ?>

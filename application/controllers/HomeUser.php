@@ -25,6 +25,11 @@ class HomeUser extends CI_Controller {
                 $data['username']=$session_data['username'];
                 $data['level']=$session_data['level'];
                 $data['id']=$session_data['id'];
+
+                $this->load->model('Notif');
+                $id = $data['id'];
+                $data['notif'] = $this->Notif->notifikasiUser($id);
+
                 $this->load->view('user/header',$data);
                 $this->load->view('user/home' , $data);
                 $this->load->view('user/footer',$data);
@@ -51,4 +56,12 @@ class HomeUser extends CI_Controller {
 		$this->load->view('user/allEvent',$data);
 		$this->load->view('user/footer');
 	}
+
+       public function update($idOrder){
+                $this->load->model('Notif');
+                $session_data=$this->session->userdata('logged_in');
+                 $data['id']=$session_data['id'];
+                $this->Notif->updatenotifUser($idOrder);
+                redirect('Order/orderUserTable','refresh');
+        }
  }
