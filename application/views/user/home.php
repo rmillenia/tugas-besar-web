@@ -11,7 +11,7 @@
 							<div>
 								<?php if(is_array($name)){?>
                   					<?php foreach ($name as $key) {?>
-								<h2 class="text-white"><?php echo $key->name ; ?></h2>
+								<h2 class="text-white"><?php echo $key->name ; ?> <br>in <?php echo $key->venue ; ?>,<?php echo $key->country ; ?></h2>
 								<?php }}else{?>
 								<h2 class="text-white"> There's no upcoming events</h2>
 								<?php }?>
@@ -36,7 +36,7 @@
 							<div class="title text-center">
 								<?php if(is_array($name)){?>
                   					<?php foreach ($name as $key) {?>
-                  					<h1 class="mb-10">Ticket for <?php echo $key->name ; ?> </h1>
+                  					<h1 class="mb-10">Ticket for <?php echo $key->name ; ?> in <?php echo $key->venue ; ?>,<?php echo $key->country ; ?> </h1>
                   					<p style="color: black">Who are in extremely love with <?php echo $key->artist ; ?>.</p>
 									<?php }}else{?>
 									<h1 class="mb-10">There is No Upcoming Event's Ticket</h1>

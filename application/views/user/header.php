@@ -97,7 +97,7 @@
                         <ul>
                        <?php if(is_array($notif)){ 
                           	foreach($notif as $key){?>
-                          		<li><a href="HomeUser/update/<?php echo $key->idOrder?>"><h5>ID ORDER : <?php echo $key->idOrder?></h5> Your Order Has Been Confirmed</a></li>
+                          		<li><a href="<?php echo site_url()?>/HomeUser/update/<?php echo $key->idOrder?>"><h5>ID ORDER : <?php echo $key->idOrder?></h5> Your Order Has Been Confirmed</a></li>
                           <?php }}?>
                         </ul>
                   </li>

@@ -45,7 +45,7 @@
           <p><?php echo $ubah?>&nbsp;- &nbsp;<?php echo $key->startTime?></p>
          </div>
          <div class="col-5">
-          <p><?php echo $key->name?> in <?php echo $key->venue?>,&nbsp;<?php echo $key->venue?></p>
+          <p><?php echo $key->name?> in <?php echo $key->venue?>,&nbsp;<?php echo $key->country?></p>
          </div>
          <div class="col-1">
            <p><?php echo $key->quantity?> Tickets</p>

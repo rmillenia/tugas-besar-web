@@ -51,7 +51,7 @@
                             <th>Venue Name</th>
                             <th>City</th>
                             <th>Country</th>
-                            <th> </th>
+                            <th>Action</th>
                         </thead>
                         <tbody>
                         <?php foreach ($venue_list as $key) {?>
@@ -61,9 +61,14 @@
                             <td><?php echo $key->city; ?> </td>
                             <td><?php echo $key->country; ?> </td>
                             <td>
-                            <td>
                             <a href="javascript:void(0);" data-id="<?php echo $key->idVenue ; ?>" data-pict="<?php echo $key->photo ; ?>" data-toggle="modal" data-target="#edit-data">
-                            <button  data-toggle="modal" data-target="#ubah-data" class="btn btn-primary"><span class="fa fa-plus"></span>&nbsp;Add Photo</button></a>
+                            <button  data-toggle="modal" data-target="#ubah-data" class="btn btn-primary" style="width: 100">
+                                <?php if(empty($key->photo)) { ?> 
+                                <span class="fa fa-plus"></span>&nbsp;Add Photo  
+                                <?php }else {?> 
+                                &nbsp;Update Photo 
+                                <?php } ?>
+                            </button></a>
                             <a href="<?php echo site_url()?>/EventSeat/byID/<?php echo $key->idVenue; ?>"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span>&nbsp;Seat Zone </button></a>
                             </td>
                         </tr>

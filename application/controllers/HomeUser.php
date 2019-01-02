@@ -59,8 +59,6 @@ class HomeUser extends CI_Controller {
 
        public function update($idOrder){
                 $this->load->model('Notif');
-                $session_data=$this->session->userdata('logged_in');
-                 $data['id']=$session_data['id'];
                 $this->Notif->updatenotifUser($idOrder);
                 redirect('Order/orderUserTable','refresh');
         }

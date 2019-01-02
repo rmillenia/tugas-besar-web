@@ -14,7 +14,7 @@ class Mcountdown extends CI_Model {
  		}
 
  		public function select_name(){
- 			$query = $this->db->query("SELECT * from eventschedule inner join eventname on eventschedule.event_id = eventname.id inner join artist on eventschedule.artist_id = artist.idArtist  where CONCAT(date, ' ', startTime) >= now() order by date,startTime asc limit 1;");
+ 			$query = $this->db->query("SELECT * from eventschedule inner join eventname on eventschedule.event_id = eventname.id inner join artist on eventschedule.artist_id = artist.idArtist inner join eventvenue on eventschedule.venue_id = eventvenue.idVenue where CONCAT(date, ' ', startTime) >= now() order by date,startTime asc limit 1;");
  				if($query->num_rows()>0){
  						return $query->result();
  				}else{

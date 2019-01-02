@@ -56,7 +56,7 @@ class EventSchedule extends CI_Controller {
 		$this->load->view('admin/footer'); 
 	}
 
-	public function getDataID($id){
+	public function getDataID($ids){
 		$session_data=$this->session->userdata('logged_in');
 		$data['username']=$session_data['username'];
 		$data['level']=$session_data['level'];
@@ -72,7 +72,7 @@ class EventSchedule extends CI_Controller {
 		$data['countNotif'] = $this->Notif->count();
 
 		$this->load->model('EventScheduleModel');
-		$data["list"] = $this->EventScheduleModel->getSchedule($id);
+		$data["list"] = $this->EventScheduleModel->getSchedule($ids);
 		$data["cat_list"] = $this->EventScheduleModel->getCatOption();
 		$data["venue_list"] = $this->EventScheduleModel->getVenueOption();
 		$data["name_list"] = $this->EventScheduleModel->getNameOption();

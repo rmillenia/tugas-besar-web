@@ -141,17 +141,18 @@
                             <hr>
                             <div class="card-body browser">
                             <?php 
+                            if(!empty($allTicket) && is_null($allTicket)){
                             $no = 1;
                             foreach ($allTicket as $key): ?>
 
                             <?php if ($no%2 == 0) { ?>
-                                <p class="m-t-30 f-w-600"><?php echo $key->name?><span class="pull-right"><?php echo number_format($key->persen, 0);?>%</span></p>
+                                <p class="m-t-30 f-w-600"><?php echo $key->name?>&nbsp;in&nbsp;<?php echo $key->venue?><span class="pull-right"><?php echo number_format($key->persen, 0);?>%</span></p>
                                 <div class="progress">
                                     <div role="progressbar" style="width: <?php echo $key->persen ?>%; height:8px;" class="progress-bar bg-danger wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
                                 </div>
                             <?php }else{?>
 
-                             <p class="m-t-30 f-w-600"><?php echo $key->name?><span class="pull-right"><?php echo number_format($key->persen, 0);?>%</span></p>
+                             <p class="m-t-30 f-w-600"><?php echo $key->name?>&nbsp;in&nbsp;<?php echo $key->venue?><span class="pull-right"><?php echo number_format($key->persen, 0);?>%</span></p>
                                 <div class="progress">
                                     <div role="progressbar" style="width: <?php echo $key->persen ?>%; height:8px;" class="progress-bar bg-warning wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
                                 </div>
@@ -159,6 +160,8 @@
                             <?php 
                             $no++;
                             endforeach?>
+                            <?php } else {
+                                echo "tidak ada tiket yang tersedia";} ?> 
                                 </div>
                             </div>
                         </div>
