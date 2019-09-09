@@ -142,7 +142,7 @@
                 <div class="modal-body">
                   <div class="container-fluid">
                     <div class="row">
-                    <div class="col-6 scroll" style='overflow:auto;width:400px;height:500px;'>
+                    <div class="col-6 scroll" style='overflow:auto;width:100%;height:500px;'>
                       <center><img src="<?php echo base_url()?>/assets/imgEvent/<?php echo $search[0]->pict?>" width="200px"></center><br>
                         <p align="justify" style="color: black">
                         MeetUp is a ticket search engine that makes finding tickets to live entertainment a cinch. With the largest ticket selection of any site on the web, we have <?php echo $search[0]->artist ;?> tickets for every fan at every price point. As most concert fans know, <?php echo $search[0]->artist ;?> puts on one of the best performances of any artist currently touring. Fans of pop music won't want to miss this show.
