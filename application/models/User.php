@@ -114,7 +114,7 @@ class User extends CI_Model {
 
     public function updatePic($id)
     {   
-                $object = array(
+            $object = array(
                 'pictureUser' => $this->upload->data('file_name')
             );
             $this->db->where('idUser', $id);
